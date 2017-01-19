@@ -1,0 +1,88 @@
+#!/bin/sh
+#number_pyramid - creates a sideways pyramid of numbers starting with 0
+	#and incrementing to one less of the number the user inputs, and then decrements back
+	#to zero. If argument passed is not an integer it will prompt the user again
+
+#initialize variables
+i=0
+j=0
+
+#prompts user for input and stores in the variable user_input
+echo "Please enter an integer, or type "'"exit"'" to quit: "
+read user_input
+
+#echoes back the user input and redirects output to grep. temp variable test
+	#if the grep conditions are met (temp equals 0 if user_input is a valid integer) 
+echo "Your input is:"
+echo "$user_input" | grep '^[0-9]*$'
+temp=`echo "$?"`
+
+#while the value the user inputs is not an integer it will loop and prompt
+	#the user again until the input is a proper integer
+while [ $temp -ne 0 2> /dev/null ]
+do
+	#if the user inputs the word "exit" then the script's exist status will
+			#become 0, terminating the script
+	if [ $user_input = 'exit' ]
+	then
+		echo "exit"
+		exit 0
+	fi
+	echo "not a valid option."
+	#prompts user for input and stores in user_input	
+	echo "Please enter an integer, or type "'"exit"'" to quit: "
+	read user_input
+	
+	
+	#echoes back the user input and redirects output to grep. temp variable test
+        	#if the grep conditions are met (temp equals 0 if user_input is a valid integer)
+	echo "Your input is: "
+	echo $user_input | grep '^[0-9]*$'
+	temp=`echo $?`
+	
+done
+
+
+
+#nested loops to print half of the pyramid (incrementing from 0 to user_input -1
+#outer loop to iterate through rows
+while [ $i -le $user_input ]
+do
+	#resets j to zero
+	j=0
+	#inner loop to iterate through columns within that row
+	while [ $j -lt $i ]
+	do
+		#print the current value of j and then a space
+		printf "$j "
+		#increments j by 1
+		j=`expr $j + 1`	
+	done
+	#prints a new line
+	printf "\n"
+	#increments the current value of i by 1
+	i=`expr $i + 1`
+done
+
+#sets the value of i to be user_input -2, which will be one less from where the top half
+	#of the pyramid ended
+i=`expr $user_input - 1`
+
+#nested loops to print the rest of the pyramid
+while [ $i -gt 0 ]
+do
+        #resets j to zero
+        j=0
+        #inner loop to iterate through columns within that row
+        while [ $j -lt $i ]
+        do
+                #print the current value of j and then a space
+                printf "$j "
+                #increments j by 1
+                j=`expr $j + 1`
+        done
+        #echoes a new line
+        printf "\n"
+        #increments the current value of i by 1
+        i=`expr $i - 1`
+done

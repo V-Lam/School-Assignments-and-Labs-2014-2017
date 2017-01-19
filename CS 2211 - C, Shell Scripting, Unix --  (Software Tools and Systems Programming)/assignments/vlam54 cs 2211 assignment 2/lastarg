@@ -1,0 +1,31 @@
+#!/bin/sh
+#lastarg - prints out the last argument in the list
+
+#creates a counter variable called i
+i=1
+#creates a variable numb_args that is equal to the number of arguments
+numb_args=$#
+
+#if no argument is provided (number of arguments is zero) return nothing
+if [ $# -eq 0 ]
+	then
+	:
+#otherwise script returns the number of arguments and the last argument
+else
+	echo the number of arguments $#
+	echo "The last argument is:"
+
+	#while loop to shift all the arguments so that the last argument becomes the first
+	while [ $i -lt $numb_args ]
+	do
+		#shifts the agruments
+		shift
+		
+		#increments the value of the counter variable by 1
+		i=`expr $i + 1`
+
+	done
+
+	 #prints out the argument at location 1	
+	echo $1 
+fi

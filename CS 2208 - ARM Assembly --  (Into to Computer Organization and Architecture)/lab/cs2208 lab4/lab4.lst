@@ -1,0 +1,113 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;QUES1
+    2 00000000         ; AREA lab4, CODE, READONLY
+    3 00000000         ; ENTRY
+    4 00000000         
+    5 00000000         ;add 32 times the content of r0 and r1 only if N is clea
+                       r. store in r2
+    6 00000000         ; ADDPL r2, r1, r0, LSL#5 ;shifting by 5 is the same as 
+                       multiplying it by 2^5=32
+    7 00000000         
+    8 00000000         ;subtract the content of r3 from 0x990, put result in r4
+                        only if C is clear and Z is clear
+    9 00000000         ; RSBHI r4, r3, #0x990
+   10 00000000         
+   11 00000000         ;clear the second significant byte of the content of r5 
+                       (store 8 zeroes in it) and put result in r6
+   12 00000000         ; BICS r6, r5, #0xF0
+   13 00000000         
+   14 00000000         ; END
+   15 00000000         
+   16 00000000         
+   17 00000000         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   18 00000000         
+   19 00000000         
+   20 00000000         ;ques 3: A) tranditional assembly, only branches can be 
+                       conditional (dont use ARM conditional execution feature)
+                       
+   21 00000000                 AREA             lab4, CODE, READONLY
+   22 00000000                 ENTRY
+   23 00000000         
+   24 00000000 E3A00006        MOV              r0,#6       ;test values
+   25 00000004 E3A01004        MOV              r1,#4
+   26 00000008         
+   27 00000008 E1500001        CMP              r0,r1       ;is [r0]==[r1]
+   28 0000000C 0A000004        BEQ              Stop        ;if so stop
+   29 00000010         
+   30 00000010         
+   31 00000010 E1500001        CMP              r0,r1       ;is [r0]>[r1]
+   32 00000014 CA000000        BGT              True        ;if so then [r0] <-
+                                                             [r0] – [r1]
+   33 00000018 EA000000        B                False       ;if not then [r0] <
+                                                            - [r1] – [r0] 
+   34 0000001C         
+   35 0000001C         
+   36 0000001C         True                                 ;if so then [r0] <-
+                                                             [r0] – [r1]
+   37 0000001C E0400001        SUB              r0, r0, r1
+   38 00000020         
+   39 00000020         False                                ;if not then [r0] <
+                                                            - [r1] – [r0] 
+   40 00000020 E0410000        SUB              r0, r1, r0
+   41 00000024         
+   42 00000024         
+   43 00000024 EAFFFFFE 
+                       Stop    B                Stop
+   44 00000028         
+   45 00000028                 END
+Command Line: --debug --xref --bi --apcs=interwork --depend=.\lab4.d -o.\lab4.o
+ -I"C:\Program Files (x86)\ARM simulator\ARM\RV31\INC" -I"C:\Program Files (x86
+)\ARM simulator\ARM\CMSIS\Include" --predefine="__EVAL SETA 1" --list=.\lab4.ls
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+t lab4.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+False 00000020
+
+Symbol: False
+   Definitions
+      At line 39 in file lab4.s
+   Uses
+      At line 33 in file lab4.s
+Comment: False used once
+Stop 00000024
+
+Symbol: Stop
+   Definitions
+      At line 43 in file lab4.s
+   Uses
+      At line 28 in file lab4.s
+      At line 43 in file lab4.s
+
+True 0000001C
+
+Symbol: True
+   Definitions
+      At line 36 in file lab4.s
+   Uses
+      At line 32 in file lab4.s
+Comment: True used once
+lab4 00000000
+
+Symbol: lab4
+   Definitions
+      At line 21 in file lab4.s
+   Uses
+      None
+Comment: lab4 unused
+4 symbols
+335 symbols in table

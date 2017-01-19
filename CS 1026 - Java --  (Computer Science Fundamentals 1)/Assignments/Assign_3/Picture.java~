@@ -1,0 +1,264 @@
+import java.awt.*;
+import java.awt.font.*;
+import java.awt.geom.*;
+import java.text.*;
+
+/**
+ * A class that represents a picture.  This class inherits from 
+ * SimplePicture and allows the student to add functionality to
+ * the Picture class.  
+ * 
+ * Copyright Georgia Institute of Technology 2004-2005
+ * @author Barbara Ericson ericson@cc.gatech.edu
+ */
+public class Picture extends SimplePicture 
+{
+  ///////////////////// constructors //////////////////////////////////
+  
+  /**
+   * Constructor that takes no arguments 
+   */
+  public Picture ()
+  {
+    /* not needed but use it to show students the implicit call to super()
+     * child constructors always call a parent constructor 
+     */
+    super();  
+  }
+  
+  /**
+   * Constructor that takes a file name and creates the picture 
+   * @param fileName the name of the file to create the picture from
+   */
+  public Picture(String fileName)
+  {
+    // let the parent class handle this fileName
+    super(fileName);
+  }
+  
+  /**
+   * Constructor that takes the width and height
+   * @param width the width of the desired picture
+   * @param height the height of the desired picture
+   */
+  public Picture(int width, int height)
+  {
+    // let the parent class handle this width and height
+    super(width,height);
+  }
+  
+  /**
+   * Constructor that takes a picture and creates a 
+   * copy of that picture
+   */
+  public Picture(Picture copyPicture)
+  {
+    // let the parent class do the copy
+    super(copyPicture);
+  }
+  
+  ////////////////////// methods ///////////////////////////////////////
+  
+  /**
+   * Method to return a string with information about this picture.
+   * @return a string with information about the picture such as fileName,
+   * height and width.
+   */
+  public String toString()
+  {
+    String output = "Picture, filename " + getFileName() + 
+      " height " + getHeight() 
+      + " width " + getWidth();
+    return output;
+    
+  }
+  
+  
+  //method to create a new picture (a coloured version of the original) by changing the grays in a certain range to its corresponding colour
+  public Picture correctColours (Color c1, Color c2, Color c3)
+  {
+    //declares and initializes variables
+    Picture targetPicture = new Picture (this.getWidth(), this.getHeight());   //creates a new picture witht he same dimensions as the original
+    Pixel sourcePixel = null;                                                  //creates two pixel objects that are used to get pixels from the source
+    Pixel targetPixel = null;                                                  // pic to be copied to the target pic
+    int sourceColour = 0;                                                      //creates an integer sourceColour to get the value of the colour of the pixel 
+                                                                                  //from the original image
+    
+    //loops through every pixel
+    for (int y = 0; y< this.getHeight(); y++)     //loop through the rows
+    {
+      for (int x=0; x< this.getWidth(); x++)      //loop through the columns
+      {
+        sourcePixel = this.getPixel(x,y);                                         //gets the pixel from the original image at location (x,y)
+        sourceColour = sourcePixel.getRed();                                      //gets the colour from the pixel at (x,y) and stores the gray value as an integer
+        targetPixel = targetPicture.getPixel(x,y);                                //gets the pixel in the target image at locaiton (x,y)
+        
+        if ((sourceColour >= 25) && (sourceColour < 100))              //If the grey is between 25 and 100, make the corresponding pixel in the new picture c1
+        {
+          targetPixel.setColor(c1);                                               //sets the colour of the target pixel to be c1
+        }
+        else if((sourceColour >= 100) && (sourceColour < 200))         //If the grey is between 100 and 200, make the corresponding pixel in the new picture c2
+        {
+          targetPixel.setColor(c2);                                               //sets the colour of the target pixel to be c2
+        }
+        else if (sourceColour >= 200)                                  //If the grey is above 200, make the corresponding pixel in the new picture c3.  
+        {
+          targetPixel.setColor(c3);                                               //sets the colour of the target pixel to be c3
+        }
+        else                                                          //anything else
+        {
+          targetPixel.setColor(java.awt.Color.BLACK);                             //makes the corresponding pixel BLACK
+        }
+      }
+    }
+    return targetPicture; //returns the new picture
+  }
+  
+  
+////////////////////////PART B METHODS///////////////////
+  
+  //the following methods (topX, topY, bottomX, BottomY) will scan the picture object that invoked the method to find the desired pixel matching the colour passed to the method as a parameter
+  
+  
+  //scans the picture until it finds the first pixel in the X direction that has the same colour as "c"
+  private int topX(Color c)
+  {
+    //declares and initializes variables
+    Pixel sourcePixel = null;                                //creates a pixel object to get pixels from the source
+    Color sourceColour = null;                               //creates a colour object to get the colour from the pixel
+    int xCoordinate=0;        //creates an integer xCoordinate to get the value for the x-coordinate of the first pixel in the X direction that has the same colour as c
+    
+    //loops through every pixel in the source image
+    for (int x=this.getWidth()-1; x>= 0; x--)                         //loops through the columns (horizontally) starting at the very right and going left
+    {
+      for (int y= 0; y< this.getHeight(); y++)                     //loops through the rows (vertically)
+      {
+        sourcePixel = this.getPixel(x,y);                          //gets the pixel from the original image at location (x,y)
+        sourceColour = sourcePixel.getColor();                     //gets the colour from the pixel at (x,y)
+        
+        if (sourceColour.equals(c))                                //if the colour of the current pixel matches the colour c (a parameter passed)
+        { 
+          xCoordinate = x;                                //sets the value of xCoordinate to be the current value of x. At the end of the loop it will return the last 
+        }                                                     //value of x and since it started from the bottom, the last value will be the 
+                                                              //top (upper most value, first pixel in X direction)
+      }//end inner loop
+    }//end outer loop
+   return xCoordinate;            //returns the value of xCoordinate
+  }
+  
+  
+  
+  //scans the picture until it finds the first pixel in the Y direction that has the same colour as "c"
+  private int topY(Color c)
+  {
+    //declares and initializes variables
+    Pixel sourcePixel = null;                                //creates a pixel object to get pixels from the source
+    Color sourceColour = null;                               //creates a colour object to get the colour from the pixel
+    int yCoordinate=0;        //creates an integer yCoordinate to get the value for the -coordinate of the first pixel in the Y direction that has the same colour as c
+
+    //loops through every pixel in the source image
+    for (int y=this.getHeight()-1; y>= 0; y--)                      //loops through the rows (vertically) starting at the bottom of the picture and going up
+    {
+      for (int x= 0; x< this.getWidth(); x++)                      //loops through the columns (horizontally)
+      {
+        sourcePixel = this.getPixel(x,y);                          //gets the pixel from the original image at location (x,y)
+        sourceColour = sourcePixel.getColor();                     //gets the colour from the pixel at (x,y)
+        
+        if (sourceColour.equals(c))                                //if the colour of the current pixel matches the colour c (a parameter passed)
+        {
+          yCoordinate = y;                                //sets the value of yCoordinate to be the current value of y. At the end of the loop it will return the last 
+        }                                                     //value of y and since it started from the bottom, the last value will be the 
+                                                              //top (upper most value, first pixel in Y direction)
+      }//end inner loop
+    }//end outer loop
+    return yCoordinate;            //returns the value of yCoordinate
+  }
+  
+  
+  
+  //scans the picture until it finds the last pixel in the X direction that has the same colour as "c"
+  private int bottomX(Color c)
+  {
+    //declares and initializes variables
+    Pixel sourcePixel = null;                                //creates a pixel object to get pixels from the source
+    Color sourceColour = null;                               //creates a colour object to get the colour from the pixel
+    int xCoordinate=0;        //creates an integer xCoordinate to get the value for the x-coordinate of the last pixel in the x direction that has the same colour as c
+
+    //loops through every pixel in the source image
+    for (int x=0; x< this.getWidth(); x++)                         //loops through the columns (horizontally)
+    {
+      for (int y= 0; y< this.getHeight(); y++)                     //loops through the rows (vertically)
+      {
+        sourcePixel = this.getPixel(x,y);                          //gets the pixel from the original image at location (x,y)
+        sourceColour = sourcePixel.getColor();                     //gets the colour from the pixel at (x,y)
+        
+        if (sourceColour.equals(c))                                //if the colour of the current pixel matches the colour c (a parameter passed)
+        {
+          xCoordinate = x;                                //sets the value of xCoordinate to be the current value of x. At the end of the loop it will return the last 
+        }                                                     //value of x and since it started from the top, the last value will be the 
+                                                              //bottom (lower most value, last pixel in X direction)
+      }//end inner loop
+    }//end outer loop   
+    return xCoordinate;            //returns the value of xCoordinate  
+  }
+  
+  
+  
+  //scans the picture until it finds the last pixel in the Y direction that has the same colour as "c"
+  private int bottomY(Color c)
+  {
+    //declares and initializes variables
+    Pixel sourcePixel = null;                                //creates a pixel object to get pixels from the source
+    Color sourceColour = null;                               //creates a colour object to get the colour from the pixel
+    int yCoordinate=0;        //creates an integer yCoordinate to get the value for the y-coordinate of the last pixel in the Y direction that has the same colour as c
+
+    //loops through every pixel in the source image
+    for (int y=0; y< this.getHeight(); y++)                        //loops through the rows (vertically)
+    {
+      for (int x= 0; x< this.getWidth(); x++)                      //loops through the columns (horizontally)
+      {
+        sourcePixel = this.getPixel(x,y);                          //gets the pixel from the original image at location (x,y)
+        sourceColour = sourcePixel.getColor();                     //gets the colour from the pixel at (x,y)
+        
+        if (sourceColour.equals(c))                                //if the colour of the current pixel matches the colour c (a parameter passed)
+        {
+          yCoordinate = y;                                //sets the value of yCoordinate to be the current value of y. At the end of the loop it will return the last 
+        }                                                     //value of y and since it started from the top, the last value will be the 
+                                                              //bottom (lower most value, last pixel in Y direction)
+      }//end inner loop
+    }//end outer loop  
+    return yCoordinate;            //returns the value of yCoordinate 
+  }
+  
+
+  
+  //method to do the actual cropping and return the cropped image
+  public Picture cropPicture(Color c)
+  {
+    //decalres and initializes variables
+    
+    //
+    int topX = this.topX(c);
+    int bottomX = this.bottomX(c);
+    int topY = this.topY(c);
+    int bottomY = this.bottomY(c);
+    
+    Picture targetPicture = new Picture ((bottomX - topX), (bottomY - topY));     //creates a new picture with dimencions ______________________
+    Pixel sourcePixel = null;                                   //creates two pixel objects that are used to get pixels from the source
+    Pixel targetPixel = null;                                   // pic to be copied to the target pic
+            
+    for (int x = topX; x < bottomX && x <this.getWidth(); x++)
+    {
+      for (int y =topY; y < bottomY && y<this.getHeight(); y++)
+      {
+        sourcePixel = this.getPixel(x,y);                                         //gets the pixel from the original image at location (x,y)
+        targetPixel = targetPicture.getPixel(x - topX,y-topY); 
+        targetPixel.setColor(sourcePixel.getColor());
+      }//end inner loop
+    }//end outer loop
+    return targetPicture; //returns the new pictures
+  }
+   
+  
+} // end of class Picture, put all new methods before this
+ 

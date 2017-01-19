@@ -1,0 +1,176 @@
+/**
+ * Class that represents a turtle which is similar to a Logo turtle.
+ * This class inherts from SimpleTurtle and is for students
+ * to add methods to.
+ *
+ * Copyright Georgia Institute of Technology 2004
+ * @author Barb Ericson ericson@cc.gatech.edu
+ */
+public class Turtle extends SimpleTurtle
+{
+  ////////////////// constructors ///////////////////////
+  
+  /** Constructor that takes the x and y and a picture to
+   * draw on
+   * @param x the starting x position
+   * @param y the starting y position
+   * @param picture the picture to draw on
+   */
+  public Turtle (int x, int y, Picture picture) 
+  {
+    // let the parent constructor handle it
+    super(x,y,picture);
+  }
+  
+  /** Constructor that takes the x and y and a model
+   * display to draw it on
+   * @param x the starting x position
+   * @param y the starting y position
+   * @param modelDisplayer the thing that displays the model
+   */
+  public Turtle (int x, int y, ModelDisplay modelDisplayer) 
+  {
+    // let the parent constructor handle it
+    super(x,y,modelDisplayer);
+  }
+  
+  /** Constructor that takes the model display
+   * @param modelDisplay the thing that displays the model
+   */
+  public Turtle (ModelDisplay modelDisplay) 
+  {
+    // let the parent constructor handle it
+    super(modelDisplay);
+  }
+  
+  /**
+   * Constructor that takes a picture to draw on
+   * @param p the picture to draw on
+   */
+  public Turtle (Picture p)
+  {
+    // let the parent constructor handle it
+    super(p);
+  }  
+  
+  /////////////////// methods ///////////////////////
+  public void drawSquare (int width)//draw square method
+  {
+    this.turnRight();//turns turtle right
+    this.forward(width);//moves the turtle forward a certain width
+    this.turnRight();
+    this.forward(width);
+    this.turnRight();
+    this.forward(width);
+    this.turnRight();
+    this.forward(width);
+  }
+
+  public void drawVee (int length)//method to draw the letter V
+  {
+    this.turn(225);
+    this.forward(length);
+    this.turn(90);
+    this.forward(length);
+  }
+  
+  
+/////////////////// Assignment 1 methods ///////////////////////
+  
+  public void drawKey () //draw key method. No parameters returned
+  {
+    this.forward(5);//moves the turtle forward5
+    this.turn(-90);//turns the turtle left
+    this.forward(30);
+    this.turn(90);//turns the turtle right
+    this.forward(30);
+    this.turn(90);
+    this.forward(20);
+    this.turn(90);
+    this.forward(10);
+    this.turn(90);
+    this.forward(10);
+    this.turn(-90);
+    this.forward(10);
+    this.turn(-90);
+    this.forward(20);
+    this.turn(-90);
+    this.forward(25);
+  }
+  
+  
+  //drawKeyRow method
+  public void drawKeyRow(int numKeys)    //parameter is an integer called numKeys
+  {
+    for (int i = 0; i<numKeys; i++)    //For lop:number of loops = the value of numKeys
+    {
+      this.drawKey();               //calls the drawKey method. By looping this method we can create a row of Keys
+    } 
+  }
+  
+  
+  //drawKeyFrame method
+  public void drawKeyFrame(int numKeys)//parameter is an integer called numKeys
+  {
+    for (int i=0; i<4; i++)//For loop: loops 4 times because there are 4 edges in a frame
+    {
+      this.drawKeyRow(numKeys);//calls the drawKeyRow method to draw the key in a row. number of keys in a rorw = value of numKeys
+      this.turn(90);//turns the turtle right
+    }
+  }    
+   
+  
+  //drawKeyFrameRow method
+  public void drawKeyFrameRow(int numKeys, int numFrames)//parameters are integers called numKeys and numFrames
+  {
+    //declares and initializes the integer variable frameWidth. This will be used to teleport the turtle a certain distance
+    int frameWidth = (2*30)+ (40 * numKeys);        // 30 is width of a vertical column of Keys. 40 is the width of one Key
+  
+    for (int i = 1; i<=numFrames; i++)             //For loop: loops for the number of frames desired (number of loops = value of numFrames)
+    {  
+      this.drawKeyFrame(numKeys);                  //calls the drawKeyFrame method to draw a frame with  "numKeys" amount of keys in each frame  
+      
+      //teleports the turtle (moves turtle to a diff position without drawing so that he can draw the next frame in the new position)
+      this.penUp();
+      this.turnRight();
+      this.forward(frameWidth);
+      this.turnLeft();
+      this.penDown();
+    }
+  }
+    
+  
+  //drawKeyFrameGrid method
+  public void drawKeyFrameGrid (int numKeys, int numFramesRow, int numFramesCol)
+  {
+   int frameHeight = (60* numFramesRow)+ (40 * numKeys * numFramesRow);
+   int frameWidth = (2*30)+ (40 * numKeys);
+   
+     for (int i =1; i<=numFramesCol; i++)  //For loop: the number of loops = the amount of columns desired
+    {  
+      this.drawKeyFrameRow(numKeys, numFramesRow); //calls the drawKeyFramesRow method
+      
+      //teleports the turtle (moves turtle to a diff position without drawing so that he can draw the next frame in the new position)
+      this.penUp();
+      this.backward(frameWidth);
+      this.turnLeft();
+      this.forward(frameHeight);
+      this.turnRight();
+      this.penDown();
+    }
+  }
+  
+  
+  public void drawStar (int length)
+  { 
+    for (int i=0; i<4; i++)
+    {
+      this.forward(length);
+      this.turn(144);
+    }
+    
+    this.forward(length);
+  }
+  
+  
+} // end of class Turtle, put all new methods before this

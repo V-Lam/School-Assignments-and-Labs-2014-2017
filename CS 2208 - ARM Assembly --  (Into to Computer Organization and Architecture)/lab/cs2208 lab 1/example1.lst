@@ -1,0 +1,161 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;Ques1
+    2 00000000         ;AREA example1, CODE, READONLY
+    3 00000000         ;ENTRY
+    4 00000000         ;MOV r1, #2 ;Put 2 in register r1
+    5 00000000         ;MOV r2, #3 ;Put 3 in register r2
+    6 00000000         ;MOV r3, #4 ;Put 4 in r3
+    7 00000000         ;MOV r$, #5 ;Put 5 in r4
+    8 00000000         ;MOV r5, #6 ;Put 6 in r5
+    9 00000000         ;;ADD r0, r1, r2 ;Add r1 to r2 and put the result in r0
+   10 00000000         ;ADD r0, r1, r2
+   11 00000000         ;ADD r0, r0, r3
+   12 00000000         ;ADD r0, r0, r4
+   13 00000000         ;ADD r0, r0, r5 ;Add r1-r5 and store in r0
+   14 00000000         ;END
+   15 00000000         
+   16 00000000         ;ques2  
+   17 00000000         ;AREA example1, CODE, READONLY
+   18 00000000         ;ENTRY
+   19 00000000         ;MOV r9, #9 ;Put 9 in r9
+   20 00000000         ;END
+   21 00000000         
+   22 00000000         ;ques3  
+   23 00000000         ;AREA example1, CODE, READONLY
+   24 00000000         ;ENTRY
+   25 00000000         ;MOV r0, #1
+   26 00000000         ;MOV r1, #2
+   27 00000000         ;MOV r2, #3
+   28 00000000         ;MOV r3, #4
+   29 00000000         ;MOV r4, #5
+   30 00000000         ;MUL r5, r3, r4 ;Store result in r5
+   31 00000000         ;SUB r5, r2, r5
+   32 00000000         ;ADD r5, r5, r1
+   33 00000000         ;ADD r5, r5, r0
+   34 00000000         ;END
+   35 00000000         
+   36 00000000         ;ques4  
+   37 00000000         ;AREA example1, CODE, READONLY
+   38 00000000         ;ENTRY
+   39 00000000         ;LDR r0, A ;memory location A into register 0
+   40 00000000         ;LDR r1, B
+   41 00000000         ;LDR r2, C
+   42 00000000         ;LDR r3, D
+   43 00000000         ;LDR r4, E
+   44 00000000         ;MUL r5, r3, r4 ;Store result in r5
+   45 00000000         ;SUB r5, r2, r5
+   46 00000000         ;ADD r5, r5, r1
+   47 00000000         ;ADD r5, r5, r0
+   48 00000000         ;STR r0, Z ;store in register 0 location memory Z
+   49 00000000         ;A DCD 4 ;put 4 into memory location A
+   50 00000000         ;B DCD 12 
+   51 00000000         ;C DCD -2
+   52 00000000         ;D DCD -5 
+   53 00000000         ;E DCD -9
+   54 00000000         ;Z DCD 0 
+   55 00000000         ;END
+   56 00000000         
+   57 00000000         ;ques5  
+   58 00000000                 AREA             example1, CODE, READONLY
+   59 00000000                 ENTRY
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   60 00000000 E59F0020        LDR              r0, A       ;memory location A 
+                                                            into register 0
+   61 00000004 E59F101D        LDR              r1, B
+   62 00000008 E59F201A        LDR              r2, C
+   63 0000000C E59F3017        LDR              r3, D
+   64 00000010 E59F4014        LDR              r4, E
+   65 00000014 E0050493        MUL              r5, r3, r4  ;Store result in r5
+                                                            
+   66 00000018 E0425005        SUB              r5, r2, r5
+   67 0000001C E0855001        ADD              r5, r5, r1
+   68 00000020 E0855000        ADD              r5, r5, r0
+   69 00000024 E58F0001        STR              r0, Z       ;store in register 
+                                                            0 location memory Z
+                                                            
+   70 00000028 04      A       DCB              4           ;put 4 into memory 
+                                                            location A
+   71 00000029 0C      B       DCB              12
+   72 0000002A FE      C       DCB              -2
+   73 0000002B FB      D       DCB              -5
+   74 0000002C F7      E       DCB              -9
+   75 0000002D 00      Z       DCB              0
+   76 0000002E                 END
+Command Line: --debug --xref --bi --apcs=interwork --depend=.\example1.d -o.\ex
+ample1.o -I"C:\Program Files (x86)\ARM simulator\ARM\RV31\INC" -I"C:\Program Fi
+les (x86)\ARM simulator\ARM\CMSIS\Include" --predefine="__EVAL SETA 1" --list=.
+\example1.lst example1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+A 00000028
+
+Symbol: A
+   Definitions
+      At line 70 in file example1.s
+   Uses
+      At line 60 in file example1.s
+Comment: A used once
+B 00000029
+
+Symbol: B
+   Definitions
+      At line 71 in file example1.s
+   Uses
+      At line 61 in file example1.s
+Comment: B used once
+C 0000002A
+
+Symbol: C
+   Definitions
+      At line 72 in file example1.s
+   Uses
+      At line 62 in file example1.s
+Comment: C used once
+D 0000002B
+
+Symbol: D
+   Definitions
+      At line 73 in file example1.s
+   Uses
+      At line 63 in file example1.s
+Comment: D used once
+E 0000002C
+
+Symbol: E
+   Definitions
+      At line 74 in file example1.s
+   Uses
+      At line 64 in file example1.s
+Comment: E used once
+Z 0000002D
+
+Symbol: Z
+   Definitions
+      At line 75 in file example1.s
+   Uses
+      At line 69 in file example1.s
+Comment: Z used once
+example1 00000000
+
+Symbol: example1
+   Definitions
+      At line 58 in file example1.s
+   Uses
+      None
+Comment: example1 unused
+7 symbols
+338 symbols in table

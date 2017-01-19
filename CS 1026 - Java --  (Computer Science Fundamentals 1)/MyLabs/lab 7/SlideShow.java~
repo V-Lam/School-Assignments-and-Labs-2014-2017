@@ -1,0 +1,8 @@
+public class SlideShow
+{
+  public static void main (String[] args)
+  {
+    Picture[] pictures = new Picture[4];
+    
+  }
+}

@@ -1,0 +1,18 @@
+Char2 ;LOOP
+	LDRB r4,[r0,r2] ;Get character 2 at position pointed at by r2
+	CMP r4,#'A' ;Check if character 2 is possibly not a letter
+	SUBLT r2,#1 ;If possibly not a letter, decrement this pointer
+	BLT Char2 ;Get next character
+	
+	CMP r4,#'z' ;Check if character 2 is greater than 'z'
+	SUBGT r2,#1 ;If so, character is not a letter so decrement pointer and get next character
+	BGT Char2 ;UNTIL character is a letter
+	
+	CMP r4,#'a' ;Check if character 2 is uppercase
+	ADDLT r4,#toLower ;If so, add 32 to convert character to lowercase equivalent Now r3 and r4 contain two lowercase letters
+	
+	CMP r3,r4 ;Compare character 1 and character 2
+	BEQ Check ;If equal, the string is possibly a palindrome. Continue comparing character pairs. If they are not equal, the string is not a palindrome
+	MOV r0,#0 ;Set r0 to 0 to indicating that the string is not a palindrome
+	
+	B Loop ;Skip to end

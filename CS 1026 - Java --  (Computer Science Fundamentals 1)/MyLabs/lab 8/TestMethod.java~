@@ -1,0 +1,12 @@
+public class TestMethod
+{
+  public static void main (String[] args)
+  {
+  String fileName= FileChooser.pickAFile();
+  Picture pic = new Picture(fileName);
+  
+  pic.explore();
+  pic.copyExceptWhite();
+  pic.explore();
+  }
+}

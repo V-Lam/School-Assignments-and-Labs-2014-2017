@@ -1,0 +1,17 @@
+public class TurtleDrawsX
+    {
+      public static void main(String[] args)
+      {
+        World worldObj =new World();
+        Turtle turtle1=new Turtle(worldObj);
+        turtle1.drawVee(100);
+        
+        turtle1.turn(180);
+        turtle1.turn(-225);
+        turtle1.drawVee(100);
+        
+        turtle1.turn(180);
+        turtle1.turn(-225);
+        turtle1.drawVee(100);
+      }
+    }

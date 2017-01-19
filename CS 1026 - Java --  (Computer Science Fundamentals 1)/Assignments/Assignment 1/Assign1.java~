@@ -1,0 +1,42 @@
+//Vivian Lam
+
+public class Assign1
+{
+  public static void main (String args[])
+  {
+    
+    //creating a World and Turtle object called world1 and turtle1 respectively
+    World world1 = new World();//new World object
+    Turtle turtle1 = new Turtle(world1);//turtle1 object in world1
+
+    
+    //sets the colour of the pen to be black
+    turtle1.setColor(java.awt.Color.BLACK);
+    //teleports the turtle to the starting position (turtle moves to position 200 200 without drawing a line)
+    turtle1.penUp();
+    turtle1.moveTo(200,200);
+    turtle1.penDown(); 
+    
+    
+    turtle1.drawKeyFrameGrid(3,2,2);
+    
+    Assign1.drawPic(turtle1, 250, 170, java.awt.Color.RED); 
+    Assign1.drawPic(turtle1, 470, 120, java.awt.Color.YELLOW); 
+    Assign1.drawPic(turtle1, 220, 320, java.awt.Color.CYAN); 
+    Assign1.drawPic(turtle1, 470, 345, java.awt.Color.MAGENTA); 
+  }
+  
+  
+  public static void drawPic(Turtle inTurtle, int x, int y, java.awt.Color inColour)
+  {
+    inTurtle.penUp();
+    inTurtle.moveTo(x,y);
+    inTurtle.penDown();
+    inTurtle.setColor(inColour);
+
+    //ADD YOUR OWN CODE HERE
+    inTurtle.drawStar(70);
+  }
+  
+  
+}

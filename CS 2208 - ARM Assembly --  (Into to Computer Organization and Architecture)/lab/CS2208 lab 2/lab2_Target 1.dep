@@ -1,0 +1,4 @@
+Dependencies for Project 'lab2', Target 'Target 1': (DO NOT MODIFY !)
+F (.\lab2.s)(0x56D09A7F)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I "C:\Program Files (x86)\ARM simulator\ARM\RV31\INC"-I "C:\Program Files (x86)\ARM simulator\ARM\CMSIS\Include"--list .\lab2.lst --xref -o .\lab2.o --depend .\lab2.d)
+F (.\prog1.s)(0x56D09A8C)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I "C:\Program Files (x86)\ARM simulator\ARM\RV31\INC"-I "C:\Program Files (x86)\ARM simulator\ARM\CMSIS\Include"--list .\prog1.lst --xref -o .\prog1.o --depend .\prog1.d)
+F (.\prog2.s)(0x56D09A9A)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I "C:\Program Files (x86)\ARM simulator\ARM\RV31\INC"-I "C:\Program Files (x86)\ARM simulator\ARM\CMSIS\Include"--list .\prog2.lst --xref -o .\prog2.o --depend .\prog2.d)

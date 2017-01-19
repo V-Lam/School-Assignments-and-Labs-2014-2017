@@ -1,0 +1,2 @@
+Dependencies for Project 'cs2208 ass4', Target 'Target 1': (DO NOT MODIFY !)
+F (.\prog3.s)(0x56F302CB)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I "C:\Program Files (x86)\ARM simulator\ARM\RV31\INC"-I "C:\Program Files (x86)\ARM simulator\ARM\CMSIS\Include"--list .\prog3.lst --xref -o .\prog3.o --depend .\prog3.d)

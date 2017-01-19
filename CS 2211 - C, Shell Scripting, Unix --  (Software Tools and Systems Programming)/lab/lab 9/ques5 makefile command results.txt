@@ -1,0 +1,117 @@
+a)
+obelix.gaul.csd.uwo.ca[30]% make
+gcc -std=c99 -Wall -c addition.c
+gcc -std=c99 -Wall -c add_fun.c
+gcc -std=c99 -Wall -o addition addition.o add_fun.o
+
+b)
+obelix.gaul.csd.uwo.ca[31]% make clean
+rm -f *.o addition
+
+c)
+obelix.gaul.csd.uwo.ca[32]% make all
+gcc -std=c99 -Wall -c addition.c
+gcc -std=c99 -Wall -c add_fun.c
+gcc -std=c99 -Wall -o addition addition.o add_fun.o
+
+d)
+obelix.gaul.csd.uwo.ca[33]% make all
+
+e)
+obelix.gaul.csd.uwo.ca[34]% make clean
+rm -f *.o addition
+
+f)
+obelix.gaul.csd.uwo.ca[35]% make addition
+gcc -std=c99 -Wall -c addition.c
+gcc -std=c99 -Wall -c add_fun.c
+gcc -std=c99 -Wall -o addition addition.o add_fun.o
+
+g)
+obelix.gaul.csd.uwo.ca[35]% make addition
+gcc -std=c99 -Wall -c addition.c
+gcc -std=c99 -Wall -c add_fun.c
+gcc -std=c99 -Wall -o addition addition.o add_fun.o
+obelix.gaul.csd.uwo.ca[36]% make addition
+`addition' is up to date.
+
+h)
+obelix.gaul.csd.uwo.ca[37]% rm addition.o
+
+i)
+obelix.gaul.csd.uwo.ca[38]% make
+gcc -std=c99 -Wall -c addition.c
+gcc -std=c99 -Wall -o addition addition.o add_fun.o
+
+
+j)
+obelix.gaul.csd.uwo.ca[40]% rm add_fun.o
+
+k)
+obelix.gaul.csd.uwo.ca[41]% make
+gcc -std=c99 -Wall -c add_fun.c
+gcc -std=c99 -Wall -o addition addition.o add_fun.o
+
+l)
+obelix.gaul.csd.uwo.ca[42]% touch addition.h
+
+m)
+obelix.gaul.csd.uwo.ca[43]% make
+
+n)
+obelix.gaul.csd.uwo.ca[44]% touch add_fun.c
+
+o)
+obelix.gaul.csd.uwo.ca[45]% make
+gcc -std=c99 -Wall -c add_fun.c
+gcc -std=c99 -Wall -o addition addition.o add_fun.o
+
+p)
+obelix.gaul.csd.uwo.ca[46]% touch add_fun.c
+
+q)
+obelix.gaul.csd.uwo.ca[47]% make
+gcc -std=c99 -Wall -c add_fun.c
+gcc -std=c99 -Wall -o addition addition.o add_fun.o
+
+r)
+obelix.gaul.csd.uwo.ca[48]% make test
+addition 1 2
+       Result = 3
+
+addition 6 7
+       Result = 13
+
+addition 11 2
+       Result = 13
+
+s)
+obelix.gaul.csd.uwo.ca[47]% make
+gcc -std=c99 -Wall -c add_fun.c
+gcc -std=c99 -Wall -o addition addition.o add_fun.o
+
+t)
+obelix.gaul.csd.uwo.ca[48]% make test
+addition 1 2
+       Result = 3
+
+addition 6 7
+       Result = 13
+
+addition 11 2
+       Result = 13
+
+obelix.gaul.csd.uwo.ca[49]% make clean
+rm -f *.o addition
+obelix.gaul.csd.uwo.ca[50]% make test
+gcc -std=c99 -Wall -c addition.c
+gcc -std=c99 -Wall -c add_fun.c
+gcc -std=c99 -Wall -o addition addition.o add_fun.o
+addition 1 2
+       Result = 3
+
+addition 6 7
+       Result = 13
+
+addition 11 2
+       Result = 13

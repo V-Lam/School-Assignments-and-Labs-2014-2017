@@ -1,0 +1,77 @@
+<Project>
+  <Name>Assignment1</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>assign1</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Student</Name>
+        <Access>Public</Access>
+        <Location left="304" top="33" />
+        <Size width="229" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">protected int grade</Member>
+        <Member type="Field">protected int ID</Member>
+        <Member type="Field">protected String name</Member>
+        <Member type="Constructor">public Student(int ID, String name, int grade)</Member>
+        <Member type="Method">public String convertGrade()</Member>
+        <Member type="Method">public String toString()</Member>
+        <Member type="Method">public void setId()</Member>
+        <Member type="Method">public int getId()</Member>
+        <Member type="Method">public String getName()</Member>
+        <Member type="Method">public void setName()</Member>
+        <Member type="Method">public int getGrade()</Member>
+        <Member type="Method">public void setGrade()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Undergrad</Name>
+        <Access>Public</Access>
+        <Location left="160" top="372" />
+        <Size width="344" height="190" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private float gpa</Member>
+        <Member type="Constructor">public Undergrad(float gpa, int ID, String name, int grade)</Member>
+        <Member type="Method">public void print()</Member>
+        <Member type="Method">public float getGpa()</Member>
+        <Member type="Method">public void setGpa()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>People</Name>
+        <Access>Public</Access>
+        <Location left="639" top="33" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">String convertGrade()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>Grad</Name>
+        <Access>Public</Access>
+        <Location left="536" top="372" />
+        <Size width="320" height="187" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String supervisor</Member>
+        <Member type="Constructor">public Grad(String supervisor, int ID, String name, int grade)</Member>
+        <Member type="Method">public String convertGrade()</Member>
+        <Member type="Method">public String getSupervisor()</Member>
+        <Member type="Method">public void setSupervisor()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Realization" first="0" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="1" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="3" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>

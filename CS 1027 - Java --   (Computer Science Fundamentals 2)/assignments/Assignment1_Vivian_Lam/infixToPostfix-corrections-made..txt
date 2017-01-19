@@ -1,0 +1,83 @@
+/**
+Okay so basically what is different with this version is what we do when we encounter a multiplication or division symbol 
+AND there's another multiplication or division symbol on the stack already.
+
+Idk why, but the assignemnt notes said if the precedence of the operator on the stack is higher than the one we're looking at then
+we have to pop the whole stack and add it to the end of our answer, and push the new operator we were just looking at.
+What happens when the operator on the stack does not have a higher precedence? The assignment said to push it to the stack, right?
+My understanding of precedence was just (* and / > + and -).
+this causes a problem when we have division and multiplication. Getting into is complicated. I'm a bit tired to think right now.
+The previous one d / e * c + 2 would become d e c * 2 + / instead of d  e / c * 2 +
+Anyways a solution when we find 2 multiplication/divisions in a row is to pop only one of them and add it to the answer, and push the other the the stack.
+It seems to give a correct answer, but there is actually more than one to convert. because "a b c **" is the same as "a b * c *"
+
+*/
+//Also another thing I missed that it mentioned on the assignment sheet.
+//When the precedence of the operator on the stack is higher then we pop operators of the stack UNTIL WE GET TO AN OPERATOR WITH A LOWER/SIMILAR PRECEDENCE.
+//I was just popping them all of the stack, and not checking till we got to a lower one like a + or -
+//So I fixed it in this version. Though I don't see any real differences in how it affects the output. It might be something I just didn't test though.
+
+
+//I'll comment the changes, but most of it is the same.
+
+public class InfixToPostfix {
+
+	public static void main(String[] args) {
+		Boolean check;
+		String infixEquation = "d / e * c + 2";
+		String postfixEquation = ""; 
+		ArrayStack<Character>  opStack = new ArrayStack<Character> (); 
+		for (int count = 0; count < infixEquation.length(); count++)
+		{
+			check = true;
+			if (infixEquation.charAt(count) == '*'
+					|| infixEquation.charAt(count) == '+'
+					|| infixEquation.charAt(count) == '/'
+					|| infixEquation.charAt(count) == '-')
+//I split up the if opstack.isEmpty, and the checks to see if the character we're looking at is multiplication/division, because we have to handle that differently
+//normally they multiplication/division have the highest precedence, and we would just push it onto the stack, but there are problems when 
+//have both division and multiplication. What I was saying before is the solution.
+//when the character we're looking at is division/multiplication and the character on the stack division/multiplication what we do is...
+//pop from the stack and add it to our answer, then push the operator we are looking at onto the stack.
+				if (opStack.isEmpty())
+					opStack.push(infixEquation.charAt(count));
+				else if (infixEquation.charAt(count) == '*' || infixEquation.charAt(count) == '/')
+				{
+					if (opStack.peek() == '*' || opStack.peek() == '/')
+					{
+						postfixEquation = postfixEquation + opStack.pop();
+						opStack.push(infixEquation.charAt(count));
+					}
+					else
+						opStack.push(infixEquation.charAt(count));
+				}
+				else if (opStack.peek() == '-' || opStack.peek() == '+')
+					opStack.push(infixEquation.charAt(count));
+				else
+				{
+//second change I made is here.
+//I used a boolean variable to check if there's now only low precedence operators +/- on the stack. 
+//because we only pop until we reach a low precedence operator, NOT until the stack is empty. my mistake.
+// I have to use the boolean variable becasue I can't check the top of the stack while checking if it empty
+//I'll get an error checking the top of the stack in the case that it IS empty
+
+					while(!opStack.isEmpty() && check)
+						if (opStack.peek() == '*' || opStack.peek() == '/')
+						{
+							postfixEquation = postfixEquation + opStack.pop();
+							opStack.push(infixEquation.charAt(count));
+						}
+						else 
+							check = false;
+				}
+			else
+				postfixEquation = postfixEquation + infixEquation.charAt(count);
+		}
+		while(!opStack.isEmpty())
+			postfixEquation = postfixEquation + opStack.pop();
+		System.out.println (postfixEquation);
+
+
+	}
+
+}

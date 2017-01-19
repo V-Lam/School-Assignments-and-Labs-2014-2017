@@ -1,0 +1,2 @@
+Dependencies for Project 'lab6', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Assembly_Lab_6_Source.asm)(0x56FEBB1C)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I "C:\Program Files (x86)\ARM simulator\ARM\RV31\INC"-I "C:\Program Files (x86)\ARM simulator\ARM\CMSIS\Include"--list .\assembly_lab_6_source.lst --xref -o .\assembly_lab_6_source.o --depend .\assembly_lab_6_source.d)

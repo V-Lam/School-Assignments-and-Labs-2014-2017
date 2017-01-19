@@ -1,0 +1,239 @@
+This assignment requires 3 methods, pathToRoot,
+pathToRootAgain, lowestCommonAncestor and two
+programs, TestPathToRoot.java and FindCommonAncestors.java
+
+The assignment can be separated into 2 parts:
+
+PART 1
+------
+The method pathToRoot finds the path from any node 
+to the root of the tree
+
+You need to write a method, pathToRoot, 
+that finds the path from a specified node 
+to the root. 
+
+A recursive helper method, pathToRootAgain, finds a 
+specified node. You start you recursive search at
+the root. Once you have found the specified node, 
+you add each node (starting with the 
+found node) to a list (that is passed as an 
+parameter to the method) as you return from 
+the recursive calls. The last node added to 
+the list is the root. These 2 methods are
+to be put at the end of LinkedBinaryTree.java.
+This file has these method started for you.
+[Search the web to find a complete version
+of Chase and Lewis' LinkedBinaryTree.java
+(but actually filling in the missing code left
+as exercises is good study for the final exam)]
+
+Look at the find and findagain and traversal methods in
+LinkedBinaryTree.java to see similar useful code for
+the required solutions here.
+
+In LinkedBinaryTree.java you will find:
+
+/*** Finds the target elements and returns a 
+   * path from the targetElement to the root.
+   * It calls a recursive method to do this.
+   *
+   * @param targetElement
+   * @return Iterator which will iterate over 
+   * elements on the path from the targetElement
+   * to the root of the tree (includes both targetElement
+   * and root).
+   */
+
+public Iterator<T> pathToRoot(T targetElement) 
+       throws ElementNotFoundException {
+
+// must complete for Assignment 
+
+What things should you have
+*declare pathToRoot to be an unordered list array object
+*root is a private variable in LinkedBinaryTree.java (and you
+can use it). 
+*You have to finish these two methods and put them
+into the LinkedBinaryTree.java file.
+*Use pathToRootAgain with the targetElement, root and pathToRoot
+to find the values for the list pathToRoot.
+*if the computed pathToRoot is empty at the end in
+pathToRoot, i.e. pathToRoot.isEmpty()==true,
+throw new ElementNotFoundException("binary tree");
+*return a pathToRoot.iterator() that contains all the nodes
+on the path from a specified node to the root. This is
+the value returned from pathToRoot, i.e.
+return pathToRoot.iterator();
+}
+
+/*** Will add to the pathToRoot ArrayUnorderedList<T> 
+   * visitor if the node is on the path from the targetElement 
+   * to the root of the tree
+   *
+   * @param targetElement
+   * @param node
+   * @param pathToRoot
+   */
+protected void pathToRootAgain(T targetElement,  
+                               BinaryTreeNode<T> node,  
+                               ArrayUnorderedList<T> pathToRoot){
+// must complete for Assignment 
+
+if(rode is not null) check if the node's element is equals 
+to targetElement, if it is, pathToRoot.addToRear(node.element)
+else { 
+     // check the left child
+    pathToRootAgain(targetElement,node.left,pathToRoot);
+    if(pathToRoot.isEmpty()) 
+       {
+       //check the right child
+       pathToRootAgain(targetElement,node.right,pathToRoot);
+       }
+    if the list !pathToRoot.isEmpty(), add the node.element to 
+    pathToRoot.addToRear(node.element);
+    }
+
+You need to write a TestPathToRoot.java file. This file reads
+a tree file name and builds the tree. TestPathToRoot is a 
+public class with a static main method:
+
+public static void main(String[] args) {
+LinkedBinaryTree<String> linkedBinaryTree = null;
+TreeBuilder<String> treeBuilder = null;
+treeBuilder=new TreeBuilder<String>("small_tree.txt");
+or better yet
+treeBuilder=new TreeBuilder<String>(args[0]);
+
+Iterator<String> treeElements=
+         linkedBinaryTree.iteratorInOrder();
+String current;
+
+while(treeElements.hasNext())
+{
+current = treeElements.next();
+// Here we call pathToRoot
+Iterator<String> pathFromCurrent=
+         linkedBinaryTree.pathToRoot(current); }
+}
+*You need to use exceptions in this code
+*try to locate these exceptions as close 
+as possible to were the exceptions
+might be thrown. If possible, an exception 
+should the program to continue.
+
+Some Output:
+------------
+from TestPathToRoot
+For element: D - the path to the root is: D B A
+For element: B - the path to the root is: B A
+For element: E - the path to the root is: E B A
+For element: A - the path to the root is: A
+For element: F - the path to the root is: F C A
+For element: C - the path to the root is: C A
+For element: G - the path to the root is: G C A
+
+PART 2
+------
+The second part of this assignment requires you 
+to find the common ancestor of 2 nodes. 
+You must do:
+(1) read a tree file from the command line
+(2) display the contents of the tree
+(3) ask the users for two string inputs (as nodes in the tree)
+(4) compute the lowest common ancestor (or give an error message
+that the bode is not in the tree)
+
+The program is to be put in LinkedBinaryTree.java 
+and has been started for you.
+
+
+/***
+   * Finds the lowest (ie. deepest) or maximal-level 
+   * node common to both the path from
+   * targetOne to the root and the path from 
+   * targetTwo to the root.
+   * @param targetOne The first element to find
+   * @param targetTwo The second element to find
+   * @return the element found in the lowest common ancestor node for targetOne and targetTwo
+   * @throws ElementNotFoundException
+   */
+public T lowestCommonAncestor(T targetOne,T targetTwo) 
+     throws ElementNotFoundException {
+// must complete for Assignment 
+
+*these may throw the ElementNotFoundException
+*one and two are iterators for targetOne and targetTwo
+Iterator<T> one = pathToRoot(targetOne);
+Iterator<T> two = pathToRoot(targetTwo);
+
+onPathOne is an unordered array list of type T
+
+while(one.hasNext())
+     add one.next to the rear of the onPathOne list
+ 
+while(two.hasNext())
+{ 
+temp = two.next();
+if(onPathOne contains temp) return temp;
+}
+
+// in the worst case the common ancestor of the root
+// should not ever get here
+return root.element;
+}
+
+You need to write a Java program, FindCommonAncestors.java,
+to test lowestCommonAncestor. It has a single
+static main method that builds the tree and inputs two
+nodes from the user that we want the path from.
+
+*You should catch and print useful messages.
+*Use BufferedReader to read from the terminal
+BufferedReader consoleReader=
+   new BufferedReader(new InputStreamReader(System.in));
+
+LinkedBinaryTree<String> linkedBinaryTree=null;                
+TreeBuilder<String> treeBuilder = null;
+
+System.out.print("Enter first element: ");
+String firstNode = consoleReader.readLine();
+System.out.print("Enter second element: ");
+String secondNode = consoleReader.readLine();
+
+
+treeBuilder = new TreeBuilder<String>(args[0]);
+linkedBinaryTree=treeBuilder.buildTree();
+
+System.out.println("The lowest common ancestor is: " + 
+  linkedBinaryTree.lowestCommonAncestor(firstNode,secondNode) )
+
+*You need to throw exceptions in the code. You need
+the apropriate try, catch and finaly statements. 
+
+Some Output
+-----------
+java FindCommonAncestors small_tree.txt
+
+The tree contains: DBEAFCG
+Enter first element: D
+Enter second element: G
+The lowest common ancestor is: A
+
+java FindCommonAncestors larger_tree.txt
+
+The tree contains: HDBEIAJFKCGL
+Enter first element: D
+Enter second element: F
+The lowest common ancestor is: A
+
+java FindCommonAncestors larger_tree.txt
+
+The tree contains: HDBEIAJFKCGL
+Enter first element: D
+Enter second element: Q
+Exception in thread "main" ElementNotFoundException: 
+The target element is not in this binary tree
+at LinkedBinaryTree.pathToRoot(LinkedBinaryTree.java:201)
+at LinkedBinaryTree.lowestCommonAncestor(LinkedBinaryTree.java:237)
+at FindCommonAncestors.main(FindCommonAncestors.java:40)

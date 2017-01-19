@@ -1,0 +1,62 @@
+public class InfixToPostfix {
+
+	public static void main(String[] args) {
+		
+		String infixEquation = "a+b*c-d"; // I'm not sure if the infix Equation will be coming form the user input/command line/in the code body/etc
+		String postfixEquation = ""; // this will be the final answer. We will keep building on this on till we get to the answer.
+		ArrayStack<Character>  opStack = new ArrayStack<Character> (); I already had a class that implemented a stack using an array. You can just switch it to whatever implementation you're confortable with
+
+//Basically here we're going through the entire infix equation one character at a time
+		for (int count = 0; count < infixEquation.length(); count++)
+		{
+
+//Depending on whether the character is an operand or an operator we will do different things. I checked the operators because there are only 4
+//there may have been a method that would've checked if it was an operator or operand for you but I don't know what it is if it exists.
+//Also I left out the possibility of % modulos (which gives you the remainder) ^ (exponents) and ()brackets. It didn't look like you needed them.
+			if (infixEquation.charAt(count) == '*'
+					|| infixEquation.charAt(count) == '+'
+					|| infixEquation.charAt(count) == '/'
+					|| infixEquation.charAt(count) == '-')
+
+//Right now we are assuming the first character is a operator like multiplication or addition.
+//There are 4 possibilities. 3 of which we just push the character onto the stack.
+//1: the stack is empty. We just push the character onto the stack.
+//2: the character is a * or /. We just push it onto the stack, because it has the highest precedence.
+//3: the character is a + or -, and the first character on the stack is a + or -. We push it onto the stack because it has the same precedence
+//4: the character is a + or -, and the first character on the stack is a * or /. We POP the WHOLE stack and at it to our postfix/answer string THEN PUSH IT TO THE STACK
+
+
+//With this if statement we checked the first two possibilties.
+				if (opStack.isEmpty() || infixEquation.charAt(count) == '*' || infixEquation.charAt(count) == '/')
+				opStack.push(infixEquation.charAt(count));
+//With this if statement we checked the 3rd possiblity
+				else if (opStack.peek() == '-' || opStack.peek() == '+')
+					opStack.push(infixEquation.charAt(count));
+//And this is any other possiblity (the 4th possibility)
+				else
+				{
+					while(!opStack.isEmpty())
+						postfixEquation = postfixEquation + opStack.pop(); // Using addition with strings basically put them together of course. We concatenate them.
+					opStack.push(infixEquation.charAt(count));
+				}
+
+
+// Okay so remember at the beginning I said we can either look at an operand or operator.
+// The code above was when we saw an operator (+ - * /)
+// But we can also find numbers or variables right?
+// For those ones we just added them to the postfix/answer string
+			else
+				postfixEquation = postfixEquation + infixEquation.charAt(count);
+		}
+
+//Then we just pop the rest of the stack and add it onto the posfix string
+		while(!opStack.isEmpty())
+			postfixEquation = postfixEquation + opStack.pop();
+
+//and you can change it to display the answer however you want.
+		System.out.println (postfixEquation);
+
+
+	}
+
+}

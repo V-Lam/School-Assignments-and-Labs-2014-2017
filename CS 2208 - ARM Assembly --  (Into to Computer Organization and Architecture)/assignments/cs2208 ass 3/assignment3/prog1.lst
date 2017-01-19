@@ -1,0 +1,257 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;Vivian Lam
+    2 00000000         ;program to determine whether a string of 12 ASCII encod
+                       ed digits stored in memory
+    3 00000000         ;is a valid UPC or not. If valid, store 1 in r0. if not,
+                        store 2 in r0.
+    4 00000000         
+    5 00000000                 AREA             prog1, CODE, READONLY
+    6 00000000                 ENTRY
+    7 00000000         
+    8 00000000         ;HINT 1: You can implement the division operation using 
+                       repeated subtractio
+    9 00000000         ;HINT 2: To calculate 3 × Z, you can do so using only on
+                       e ADD instruction with LSL#1 shift.
+   10 00000000         ;HINT 3: To load a byte to a register, use LDRB not LDR.
+                       
+   11 00000000         
+   12 00000000         ;r0 points to UPC
+   13 00000000         ;r1 points to the position in UPC
+   14 00000000         ;r2 for getting the current byte at that position
+   15 00000000         ;r3 is the total for the first sum
+   16 00000000         ;r4 is the total for the second sum
+   17 00000000         ;convInt is a constant used for converting ASCII into in
+                       teger
+   18 00000000         
+   19 00000000 E28F0068        ADR              r0, UPC     ;r0 to point to UPC
+                                                            
+   20 00000004 00000030 
+                       convInt EQU              48          ;Constant for conve
+                                                            rting ASCII into in
+                                                            teger (subtract 48)
+                                                            
+   21 00000004         
+   22 00000004         ;compute first sum
+   23 00000004         AddOdd                               ;Loop to add number
+                                                            s in odd positions
+   24 00000004 E7D02001        LDRB             r2,[r0,r1]  ;load byte into reg
+                                                            ister. the loaded b
+                                                            yte is the byte r1 
+                                                            points to in UPC
+   25 00000008 E2422030        SUB              r2,#convInt ;convert that byte 
+                                                            ASCII into int (sub
+                                                            tract the constant)
+                                                            
+   26 0000000C E0833002        ADD              r3, r2      ;add integer value 
+                                                            to total (first sum
+                                                            )
+   27 00000010 E2811002        ADD              r1, #2      ;point to next odd 
+                                                            digit (increase cou
+                                                            nter by 2)
+   28 00000014 E351000C        CMP              r1, #12     ;loop condition: ch
+                                                            eck if r1 pointer i
+                                                            s outside of UPC (1
+                                                            2 because 12 digits
+                                                            )
+   29 00000018 1AFFFFF9        BNE              AddOdd      ;loop UNTIL we have
+                                                             iterated enough to
+                                                             add all the digits
+                                                             at odd positions
+   30 0000001C         
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   31 0000001C         
+   32 0000001C E3A01001        MOV              r1, #1      ;Reset value of r1 
+                                                            to be 1 (this is so
+                                                             we can deal with e
+                                                            ven digits)
+   33 00000020         
+   34 00000020         
+   35 00000020         ;compute second sum  (add numbers in even positions)
+   36 00000020         AddEven                              ;Looop
+   37 00000020 E7D02001        LDRB             r2,[r0,r1]  ;load byte into reg
+                                                            ister. the loaded b
+                                                            yte is the byte r1 
+                                                            points to in UPC
+   38 00000024 E2422030        SUB              r2,#convInt ;convert that byte 
+                                                            ASCII into int(subt
+                                                            ract the constant)
+   39 00000028 E0844002        ADD              r4, r2      ;add integer value 
+                                                            to total (second su
+                                                            m)
+   40 0000002C E2811002        ADD              r1, #2      ;point to next even
+                                                             digit (increase co
+                                                            unter by 2)
+   41 00000030 E351000B        CMP              r1, #11     ;loop condition: ch
+                                                            eck if r1 pointer i
+                                                            s outside of UPC (1
+                                                            1 because 12-1 digi
+                                                            ts)
+   42 00000034 1AFFFFF9        BNE              AddEven     ;loop UNTIL we have
+                                                             iterated enough to
+                                                             add all the digits
+                                                             at even positions
+   43 00000038         
+   44 00000038         
+   45 00000038         ;multiply first sum by 3
+   46 00000038 E0833083        ADD              r3, r3, r3, LSL #1 ;left shift 
+                                                            to double the first
+                                                             sum and add first 
+                                                            sum to it
+   47 0000003C         
+   48 0000003C         ;and add it to second sum (store in r4)
+   49 0000003C E0844003        ADD              r4, r3
+   50 00000040         
+   51 00000040         ;subtract 1 (store in r4)
+   52 00000040 E2444001        SUB              r4, #1      ;
+   53 00000044         
+   54 00000044         ;compute remainder when adjusted total is divided by 10
+   55 00000044         RptSub                               ;LOOP until the rem
+                                                            aining total is les
+                                                            s than or equal to 
+                                                            9
+   56 00000044 E3540009        CMP              r4,#9       ;check if total is 
+                                                            less than or equal 
+                                                            to 9
+   57 00000048 C244400A        SUBGT            r4,#10      ;subtract 10 from t
+                                                            otal if greater tha
+                                                            n 9
+   58 0000004C 8AFFFFFC        BHI              RptSub      ;end loop
+   59 00000050         
+   60 00000050         ;subtract remainder form 9 
+
+
+
+ARM Macro Assembler    Page 3 
+
+
+   61 00000050 E2645009        RSB              r5,r4,#9    ;Subtract the remai
+                                                            nder from 9, store 
+                                                            in r5 (calculated c
+                                                            heck digit)
+   62 00000054 E7D06001        LDRB             r6,[r0,r1]  ;Load UPC check dig
+                                                            it into r6 (r1 is a
+                                                            lready pointing at 
+                                                            check digit positio
+                                                            n)
+   63 00000058 E2466030        SUB              r6,#convInt ;Subtract 48 from c
+                                                            heck digit's ASCII 
+                                                            value to obtain its
+                                                             integer value
+   64 0000005C E3A00002        MOV              r0,#2       ;Set r0 to 2 - if c
+                                                            heck digits match t
+                                                            his will change to 
+                                                            1 else, stays 2
+   65 00000060         
+   66 00000060         ;check result 
+   67 00000060 E1550006        CMP              r5,r6       ;Compare UPC check 
+                                                            digit with calculat
+                                                            ed check digit vali
+                                                            d, store 1 in r0 in
+                                                            valid, store 2 in r
+                                                            0
+   68 00000064 03A00001        MOVEQ            r0,#1       ;store 1 in r0 if c
+                                                            heck digits match a
+                                                            nd UPC is valid
+   69 00000068 13A00002        MOVNE            r0,#2
+   70 0000006C         
+   71 0000006C EAFFFFFE 
+                       Loop    B                Loop        ;Infinite loop to p
+                                                            revent error 
+   72 00000070         
+   73 00000070         ;test values 
+   74 00000070         ;UPC DCB "013800150738" ;UPC String 
+   75 00000070         ;UPC DCB "060383755577" ;UPC String 
+   76 00000070 30 36 35 
+              36 33 33 
+              34 35 34 
+              37 31 32 UPC     DCB              "065633454712" ;UPC String 
+   77 0000007C         
+   78 0000007C         
+   79 0000007C                 END
+Command Line: --debug --xref --bi --apcs=interwork --depend=.\prog1.d -o.\prog1
+.o -I"C:\Program Files (x86)\ARM simulator\ARM\RV31\INC" -I"C:\Program Files (x
+86)\ARM simulator\ARM\CMSIS\Include" --predefine="__EVAL SETA 1" --list=.\prog1
+.lst prog1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+AddEven 00000020
+
+Symbol: AddEven
+   Definitions
+      At line 36 in file prog1.s
+   Uses
+      At line 42 in file prog1.s
+Comment: AddEven used once
+AddOdd 00000004
+
+Symbol: AddOdd
+   Definitions
+      At line 23 in file prog1.s
+   Uses
+      At line 29 in file prog1.s
+Comment: AddOdd used once
+Loop 0000006C
+
+Symbol: Loop
+   Definitions
+      At line 71 in file prog1.s
+   Uses
+      At line 71 in file prog1.s
+Comment: Loop used once
+RptSub 00000044
+
+Symbol: RptSub
+   Definitions
+      At line 55 in file prog1.s
+   Uses
+      At line 58 in file prog1.s
+Comment: RptSub used once
+UPC 00000070
+
+Symbol: UPC
+   Definitions
+      At line 76 in file prog1.s
+   Uses
+      At line 19 in file prog1.s
+Comment: UPC used once
+prog1 00000000
+
+Symbol: prog1
+   Definitions
+      At line 5 in file prog1.s
+   Uses
+      None
+Comment: prog1 unused
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+convInt 00000030
+
+Symbol: convInt
+   Definitions
+      At line 20 in file prog1.s
+   Uses
+      At line 25 in file prog1.s
+      At line 38 in file prog1.s
+      At line 63 in file prog1.s
+
+1 symbol
+338 symbols in table

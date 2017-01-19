@@ -1,0 +1,51 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             prog2, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000 E59F0004        LDR              R0, = 0X12345678
+    4 00000004 EAFFFFFE 
+                       loop    b                loop
+    5 00000008 70707070 
+                       X       DCD              0x70707070
+    6 0000000C                 END
+              12345678 
+Command Line: --debug --xref --bi --apcs=interwork --depend=.\prog2.d -o.\prog2
+.o -I"C:\Program Files (x86)\ARM simulator\ARM\RV31\INC" -I"C:\Program Files (x
+86)\ARM simulator\ARM\CMSIS\Include" --predefine="__EVAL SETA 1" --list=.\prog2
+.lst prog2.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+X 00000008
+
+Symbol: X
+   Definitions
+      At line 5 in file prog2.s
+   Uses
+      None
+Comment: X unused
+loop 00000004
+
+Symbol: loop
+   Definitions
+      At line 4 in file prog2.s
+   Uses
+      At line 4 in file prog2.s
+Comment: loop used once
+prog2 00000000
+
+Symbol: prog2
+   Definitions
+      At line 1 in file prog2.s
+   Uses
+      None
+Comment: prog2 unused
+3 symbols
+336 symbols in table

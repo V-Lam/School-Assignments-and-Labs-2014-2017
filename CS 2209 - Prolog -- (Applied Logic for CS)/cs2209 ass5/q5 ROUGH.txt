@@ -1,0 +1,82 @@
+
+
+%WORDS
+
+word(dog, d,o,g).
+word(run, r,u,n).
+word(top, t,o,p).
+word(five, f,i,v,e).
+word(four, f,o,u,r).
+word(lost, l,o,s,t).
+word(mess, m,e,s,s).
+word(unit, u,n,i,t).
+word(baker, b,a,k,e,r).
+word(forum, f,o,r,u,m).
+word(green, g,r,e,e,n).
+word(super, s,u,p,e,r).
+word(prolog, p,r,o,l,o,g).
+word(vanish, v,a,n,i,s,h).
+word(wonder, w,o,n,d,e,r).
+word(yellow, y,e,l,l,o,w).
+
+%SOLUTION: checks to see which characters intersect
+solution(V1,V2,V3,H1,H2):-
+word(V1, L1,_,L9,_),
+word(V2, L3,_,L11),
+word(V3, L5,_L13,_),
+word(H1, L1,_L3,_,L5,_),
+word(H2, L9,_,L11,_,L13,_),
+V1\=V2,
+V2\=V3,
+V3\=H1,
+H1\=H2.
+
+
+
+%IGNORE BELOW
+solution(V1,V2,V3,H1,H2):-
+word(A,G,M,S),
+word(C,I,O,_),
+word(E,K,Q,W),
+word(A,B,C,D,E,_),
+word(M,N,O,P,Q,R),
+V1\=V2,
+V2\=V3,
+V3\=H1,
+H1\=H2.
+
+
+
+
+%IGNORE BELOW
+solution(C1,C2,C3,C4,C5,C6,,R1,R2,R3,R4):-.
+word(C1R1,C2,C3R3,C4,C5R1,_),
+word(C1C3,),
+word(),
+word(),
+C1 \= C2,
+C2 \= C3,
+C3 \= C4,
+C4 \= C5,
+C5 \= C6,
+C6 \= R1,
+R1 \= R2,
+R2 \= R3,
+R3 \= R4.
+
+
+
+
+
+%rows and columns
+row(L1,L2,L3,L4,L5,_).
+row(L6,_,L7,_,L8,_).
+row(L9,L10,L11,L12,L13,L14).
+row(L15,_,_,_,L16).
+
+column(L1,L6,L9,L15).
+column(L2,_,L10,_).
+column(L3,L7,L11,_).
+column(L4,_,L12,_).
+column(L5,L8,L13,L16).
+column(_,_,L14,_).

@@ -1,0 +1,36 @@
+Lab 3 Exercise 1
+
+World worldObj = new World ();
+Turtle turtle1 = new Turtle(worldObj);
+
+System.out.println(turtle1);
+
+turtle1.forward(100);
+turtle1.turnRight();
+turtle1.forward(100);
+turtle1.turnRight();
+turtle1.forward(100);
+turtle1.turnRight();
+turtle1.forward(100);
+
+System.out.println(turtle1);
+
+
+~~~~~~~~~~~~~~~~~
+
+
+World worldObj = new World();
+Turtle turtle1 = new Turtle(worldObj);
+turtle1.turn(45);
+turtle1.forward(120);
+Turtle turtle2 = new Turtle(60,60,worldObj);
+turtle2.turn(135);
+turtle2.forward(240);
+
+System.out.println
+
+int getXPos()
+int getYPos()
+
+getXPos = turtle1;
+getYPos = turtle1;

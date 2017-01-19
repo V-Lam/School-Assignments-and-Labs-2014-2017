@@ -1,0 +1,43 @@
+#!/bin/sh
+#odd_prn - echoes its shell script file name as well as its odd arguments
+
+#creates a variable numb_args that is equal to the number of arguments
+numb_args=$#
+#creates a counter variable called i
+i=1
+
+#prints its own file name to the screen
+echo "This is the shell script file name: " $0
+
+#if no argument is provided (number of arguments is zero) return nothing
+if [ $# -eq 0 ]
+        then
+        :
+#otherwise script returns the number of arguments and the last argument
+else
+        #echoes the number of arguments as well as the statement "Here are the odd arguments"
+        echo the number of arguments $#
+        echo "Here are the odd arguments:"
+
+        #prints the current argument at position $1 (this is the first argument before we enter the loop)
+        echo $1
+#while loop to shift all the arguements so that odd arguments are shifted to position $1
+
+        while [ $i -lt $numb_args ]
+        do
+                #if the crrent number of arguments is greater than 2 
+then
+                #shifts the agruments twice so that arguements at odd positions will shift to postion $1
+                if [ $# -gt 2 ]
+                then
+                        shift
+                        shift
+                        #prints the current argument at position $1
+                        echo $1
+                fi
+
+                #increments the value of the counter variable by 1
+                i=`expr $i + 1`
+
+        done
+fi
