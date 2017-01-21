@@ -1,0 +1,495 @@
+--------------
+show databases
+--------------
+
+Database
+information_schema
+mysql
+performance_schema
+vlam54db
+--------------
+show tables
+--------------
+
+Tables_in_vlam54db
+Customer
+Genre
+Movie
+Selects
+Showing
+TheatreRoom
+--------------
+load data local infile 'fall2015data.txt' into table Movie fields terminated by ','
+--------------
+
+--------------
+select * from Movie
+--------------
+
+MovID	Name	Year
+100	Star Wars	1977
+101	Up	2009
+102	Pulp Fiction	1994
+103	Aloha	2015
+104	The Martian	2015
+105	The Empire Strikes Back	1980
+106	Midnight In The Garden Of Good and Evil	1997
+107	Tommy Boy	1995
+108	Die Hard	1988
+109	There's Something About Mary	1998
+110	Two Weeks Notice	2002
+111	Back To The Future	1985
+--------------
+insert into Movie(MovID, Name, Year) values  ("666", "Howls Moving Castle", "2004")
+--------------
+
+--------------
+select * from Movie
+--------------
+
+MovID	Name	Year
+100	Star Wars	1977
+101	Up	2009
+102	Pulp Fiction	1994
+103	Aloha	2015
+104	The Martian	2015
+105	The Empire Strikes Back	1980
+106	Midnight In The Garden Of Good and Evil	1997
+107	Tommy Boy	1995
+108	Die Hard	1988
+109	There's Something About Mary	1998
+110	Two Weeks Notice	2002
+111	Back To The Future	1985
+666	Howls Moving Castle	2004
+--------------
+select * from Customer
+--------------
+
+--------------
+insert into Customer(CusID, FName, LName, Sex, Email) values  ("222", "Will", "Beldman", "M", "wbeldma@uwo.ca")
+--------------
+
+--------------
+insert into Customer(CusID, FName, LName, Sex, Email) values  ("223", "Vivian", "Lam", "F", "vlam54@uwo.ca")
+--------------
+
+--------------
+insert into Customer(CusID, FName, LName, Sex, Email) values  ("224", "Bill", "Clinton", "M", "billy@prez.com")
+--------------
+
+--------------
+insert into Customer(CusID, FName, LName, Sex, Email) values  ("225", "Hilary", "Clinton", "F", "nextprezmaybe@prez.com")
+--------------
+
+--------------
+insert into Customer(CusID, FName, LName, Sex, Email) values  ("226", "Donald", "Trump", "M", "nextprezalso@prez.com")
+--------------
+
+--------------
+insert into Customer(CusID, FName, LName, Sex, Email) values  ("227", "Gary", "Johnson", "M", "nextpreztoo@prez.com")
+--------------
+
+--------------
+insert into Customer(CusID, FName, LName, Sex, Email) values  ("228", "Jill", "Stein", "F", "nextprezaswell@prez.com")
+--------------
+
+--------------
+insert into Customer(CusID, FName, LName, Sex, Email) values  ("229", "Barack", "Obama", "M", "lastprez@prez.com")
+--------------
+
+--------------
+select * from Customer
+--------------
+
+CusID	FName	LName	Sex	Email
+222	Will	Beldman	M	wbeldma@uwo.ca
+223	Vivian	Lam	F	vlam54@uwo.ca
+224	Bill	Clinton	M	billy@prez.com
+225	Hilary	Clinton	F	nextprezmaybe@prez.com
+226	Donald	Trump	M	nextprezalso@prez.com
+227	Gary	Johnson	M	nextpreztoo@prez.com
+228	Jill	Stein	F	nextprezaswell@prez.com
+229	Barack	Obama	M	lastprez@prez.com
+--------------
+select * from Genre
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("100", "Action")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("100", "SciFi")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("101", "Animated")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("102", "Action")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("103", "Romance")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("104", "Action")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("104", "SciFi")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("105", "Action")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("105", "SciFi")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("106", "Drama")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("107", "Comedy")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("108", "Action")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("109", "Comedy")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("110", "Comedy")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("110", "Romance")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("111", "SciFi")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("111", "Action")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("111", "Comedy")
+--------------
+
+--------------
+insert into Genre(MovID, Genre) values  ("666", "Animated")
+--------------
+
+--------------
+select * from Genre
+--------------
+
+MovID	Genre
+100	Action
+100	SciFi
+101	Animated
+102	Action
+103	Romance
+104	Action
+104	SciFi
+105	Action
+105	SciFi
+106	Drama
+107	Comedy
+108	Action
+109	Comedy
+110	Comedy
+110	Romance
+111	Action
+111	Comedy
+111	SciFi
+666	Animated
+--------------
+select * from TheatreRoom
+--------------
+
+--------------
+insert into TheatreRoom(RoomNo, Capacity) values  ("1", "30")
+--------------
+
+--------------
+insert into TheatreRoom(RoomNo, Capacity) values  ("2", "5")
+--------------
+
+--------------
+insert into TheatreRoom(RoomNo, Capacity) values  ("3", "100")
+--------------
+
+--------------
+insert into TheatreRoom(RoomNo, Capacity) values  ("4", "30")
+--------------
+
+--------------
+insert into TheatreRoom(RoomNo, Capacity) values  ("5", "6")
+--------------
+
+--------------
+select * from TheatreRoom
+--------------
+
+RoomNo	Capacity
+1	30
+2	5
+3	100
+4	30
+5	6
+--------------
+select * from Showing
+--------------
+
+--------------
+insert into Showing(ShowID, Date, Time, RoomNo, MovID) values  ("333", "2016-02-11", "21:30", "1", "100")
+--------------
+
+--------------
+insert into Showing(ShowID, Date, Time, RoomNo, MovID) values  ("334", "2016-02-11", "19:30", "2", "100")
+--------------
+
+--------------
+insert into Showing(ShowID, Date, Time, RoomNo, MovID) values  ("335", "2016-02-11", "19:00", "3", "101")
+--------------
+
+--------------
+insert into Showing(ShowID, Date, Time, RoomNo, MovID) values  ("337", "2016-03-12", "19:00", "1", "102")
+--------------
+
+--------------
+insert into Showing(ShowID, Date, Time, RoomNo, MovID) values  ("338", "2016-03-12", "21:00", "1", "103")
+--------------
+
+--------------
+insert into Showing(ShowID, Date, Time, RoomNo, MovID) values  ("339", "2016-03-13", "19:00", "2", "103")
+--------------
+
+--------------
+insert into Showing(ShowID, Date, Time, RoomNo, MovID) values  ("340", "2016-03-20", "19:00", "1", "103")
+--------------
+
+--------------
+insert into Showing(ShowID, Date, Time, RoomNo, MovID) values  ("341", "2016-03-20", "21:00", "1", "104")
+--------------
+
+--------------
+insert into Showing(ShowID, Date, Time, RoomNo, MovID) values  ("346", "2016-03-22", "20:30", "2", "107")
+--------------
+
+--------------
+insert into Showing(ShowID, Date, Time, RoomNo, MovID) values  ("345", "2016-03-22", "21:00", "3", "108")
+--------------
+
+--------------
+insert into Showing(ShowID, Date, Time, RoomNo, MovID) values  ("342", "2016-03-20", "19:00", "2", "109")
+--------------
+
+--------------
+insert into Showing(ShowID, Date, Time, RoomNo, MovID) values  ("344", "2016-03-21", "19:00", "1", "110")
+--------------
+
+--------------
+insert into Showing(ShowID, Date, Time, RoomNo, MovID) values  ("347", "2016-03-23", "22:00", "1", "110")
+--------------
+
+--------------
+insert into Showing(ShowID, Date, Time, RoomNo, MovID) values  ("336", "2016-02-11", "21:00", "2", "111")
+--------------
+
+--------------
+insert into Showing(ShowID, Date, Time, RoomNo, MovID) values  ("500", "2016-09-19", "19:00", "3", "666")
+--------------
+
+--------------
+select * from Showing
+--------------
+
+ShowID	Date	Time	RoomNo	MovID
+333	2016-02-11	21:30:00	1	100
+334	2016-02-11	19:30:00	2	100
+335	2016-02-11	19:00:00	3	101
+336	2016-02-11	21:00:00	2	111
+337	2016-03-12	19:00:00	1	102
+338	2016-03-12	21:00:00	1	103
+339	2016-03-13	19:00:00	2	103
+340	2016-03-20	19:00:00	1	103
+341	2016-03-20	21:00:00	1	104
+342	2016-03-20	19:00:00	2	109
+344	2016-03-21	19:00:00	1	110
+345	2016-03-22	21:00:00	3	108
+346	2016-03-22	20:30:00	2	107
+347	2016-03-23	22:00:00	1	110
+500	2016-09-19	19:00:00	3	666
+--------------
+select * from Selects
+--------------
+
+--------------
+insert into Selects(ShowID, CusID, Price, Rating) values  ("333", "222", "4", "5")
+--------------
+
+--------------
+insert into Selects(ShowID, CusID, Price, Rating) values  ("340", "222", "12", "1")
+--------------
+
+--------------
+insert into Selects(ShowID, CusID, Price, Rating) values  ("334", "222", "10", "3")
+--------------
+
+--------------
+insert into Selects(ShowID, CusID, Price, Rating) values  ("346", "222", "5", "4")
+--------------
+
+--------------
+insert into Selects(ShowID, CusID, Price, Rating) values  ("334", "223", "30", "5")
+--------------
+
+--------------
+insert into Selects(ShowID, CusID, Price, Rating) values  ("340", "223", "5", "1")
+--------------
+
+--------------
+insert into Selects(ShowID, CusID, Price, Rating) values  ("334", "224", "20", "4")
+--------------
+
+--------------
+insert into Selects(ShowID, CusID, Price, Rating) values  ("334", "226", "100", "2")
+--------------
+
+--------------
+insert into Selects(ShowID, CusID, Price, Rating) values  ("334", "225", "5", "1")
+--------------
+
+--------------
+insert into Selects(ShowID, CusID, Price, Rating) values  ("347", "229", "12", "5")
+--------------
+
+--------------
+insert into Selects(ShowID, CusID, Price, Rating) values  ("334", "229", "5", "3")
+--------------
+
+--------------
+insert into Selects(ShowID, CusID, Price, Rating) values  ("500", "223", "999", "5")
+--------------
+
+--------------
+select * from Selects
+--------------
+
+ShowID	CusID	Price	Rating
+333	222	4.00	5
+334	222	10.00	3
+334	223	30.00	5
+334	224	20.00	4
+334	225	5.00	1
+334	226	100.00	2
+334	229	5.00	3
+340	222	12.00	1
+340	223	5.00	1
+346	222	5.00	4
+347	229	12.00	5
+500	223	999.00	5
+--------------
+select * from Customer
+--------------
+
+CusID	FName	LName	Sex	Email
+222	Will	Beldman	M	wbeldma@uwo.ca
+223	Vivian	Lam	F	vlam54@uwo.ca
+224	Bill	Clinton	M	billy@prez.com
+225	Hilary	Clinton	F	nextprezmaybe@prez.com
+226	Donald	Trump	M	nextprezalso@prez.com
+227	Gary	Johnson	M	nextpreztoo@prez.com
+228	Jill	Stein	F	nextprezaswell@prez.com
+229	Barack	Obama	M	lastprez@prez.com
+--------------
+update Customer set FName ="Sue" where FName="Jill"
+--------------
+
+--------------
+select * from Customer
+--------------
+
+CusID	FName	LName	Sex	Email
+222	Will	Beldman	M	wbeldma@uwo.ca
+223	Vivian	Lam	F	vlam54@uwo.ca
+224	Bill	Clinton	M	billy@prez.com
+225	Hilary	Clinton	F	nextprezmaybe@prez.com
+226	Donald	Trump	M	nextprezalso@prez.com
+227	Gary	Johnson	M	nextpreztoo@prez.com
+228	Sue	Stein	F	nextprezaswell@prez.com
+229	Barack	Obama	M	lastprez@prez.com
+--------------
+select * from Selects
+--------------
+
+ShowID	CusID	Price	Rating
+333	222	4.00	5
+334	222	10.00	3
+334	223	30.00	5
+334	224	20.00	4
+334	225	5.00	1
+334	226	100.00	2
+334	229	5.00	3
+340	222	12.00	1
+340	223	5.00	1
+346	222	5.00	4
+347	229	12.00	5
+500	223	999.00	5
+--------------
+select Name, Showing.ShowID, Rating from Selects, Movie, Showing where Movie.MovID=Showing.MovID and Showing.ShowID = Selects.ShowID and Movie.Name = "Star Wars"
+--------------
+
+Name	ShowID	Rating
+Star Wars	333	5
+Star Wars	334	3
+Star Wars	334	5
+Star Wars	334	4
+Star Wars	334	1
+Star Wars	334	2
+Star Wars	334	3
+--------------
+update Selects, Movie, Showing set Rating ="5" where Movie.MovID=Showing.MovID and Showing.ShowID = Selects.ShowID and Movie.Name = "Star Wars"
+--------------
+
+--------------
+select Name, Showing.ShowID, Rating from Selects, Movie, Showing where Movie.MovID=Showing.MovID and Showing.ShowID = Selects.ShowID and Movie.Name = "Star Wars"
+--------------
+
+Name	ShowID	Rating
+Star Wars	333	5
+Star Wars	334	5
+Star Wars	334	5
+Star Wars	334	5
+Star Wars	334	5
+Star Wars	334	5
+Star Wars	334	5
+--------------
+select * from Selects
+--------------
+
+ShowID	CusID	Price	Rating
+333	222	4.00	5
+334	222	10.00	5
+334	223	30.00	5
+334	224	20.00	5
+334	225	5.00	5
+334	226	100.00	5
+334	229	5.00	5
+340	222	12.00	1
+340	223	5.00	1
+346	222	5.00	4
+347	229	12.00	5
+500	223	999.00	5

@@ -1,0 +1,514 @@
+0
+User is entering a number
+
+User correctly entered the number2
+
+Maintenance selected 2: print Execution traces
+
+Maintenance is printing the execution traces
+
+User is entering a number
+
+User correctly entered the number4
+
+Maintenance selected 4: Logout
+
+User is entering a number
+
+User correctly entered the number1
+
+
+User is entering a number
+
+User correctly entered the number2
+
+Manager selected 2: Delete account
+
+User is entering a number
+
+User correctly entered the number12346
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 0int high = 1
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 1int high = 1
+
+int getAccountIndex() found 1
+
+Manager is asked for confirmation of the deletion
+
+User is entering a number
+
+User correctly entered the number1
+
+Manager selected 1: Proceed
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 0int high = 1
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 1int high = 1
+
+int getAccountIndex() found 1
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 0int high = 1
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 1int high = 1
+
+int getAccountIndex() found 1
+
+Manager successfully deleted an account
+
+
+User is entering a number
+
+User correctly entered the number4
+
+Manager selected 4: Display all accounts
+
+Manager is asked how to display accounts
+
+User is entering a number
+
+User correctly entered the number0
+
+Manager selected 0: Cancel
+
+
+User is entering a number
+
+User correctly entered the number5
+
+Manager selected 6: Logout
+
+User is entering a number
+
+User correctly entered the number12345
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12345 int low = 0int high = 0
+
+int getAccountIndex() found 0
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12345 int low = 0int high = 0
+
+int getAccountIndex() found 0
+
+Logged in as Customer #12345
+
+
+User is entering a number
+
+User correctly entered the number5
+
+12345 selected 5: View balance
+
+
+User is entering a number
+
+User correctly entered the number7
+
+12345 selected 7: Logout
+
+User is entering a number
+
+User correctly entered the number12345
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12345 int low = 0int high = 0
+
+int getAccountIndex() found 0
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12345 int low = 0int high = 0
+
+int getAccountIndex() found 0
+
+Logged in as Customer #12345
+
+
+User is entering a number
+
+User correctly entered the number6
+
+12345 selected 6: Transfer
+
+User is entering a number
+
+User correctly entered the number1
+
+12345 selected 1: Transfer from Chequing
+
+User is entering a double
+
+User correctly entered a double
+
+12345 entered a potential valid transfer amount
+
+penalty(Customer& theCustomer #12345 double amount = 20.000000)
+
+There is a penalty
+12345 faces a penalty for the withdrawal
+
+User is entering a number
+
+User correctly entered the number1
+
+12345 accepted the penalty
+
+12345 successfully transferred with a penalty
+
+
+User is entering a number
+
+User correctly entered the number7
+
+12345 selected 7: Logout
+
+User is entering a number
+
+User correctly entered the number0
+
+maintenanceMenu()
+
+User is entering a number
+
+User correctly entered the number1
+
+Maintenance selected 1: Toggle execution tracing
+
+User is entering a number
+
+User correctly entered the number2
+
+User is entering a number
+
+User correctly entered the number4
+
+Maintenance selected 4: Logout
+
+User is entering a number
+
+User is entering a number
+
+User correctly entered the number12345
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12345 int low = 0int high = 0
+
+int getAccountIndex() found 0
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12345 int low = 0int high = 0
+
+int getAccountIndex() found 0
+
+Logged in as Customer #12345
+
+
+User is entering a number
+
+User correctly entered the number7
+
+12345 selected 7: Logout
+
+User is entering a number
+
+User correctly entered the number1
+
+
+User is entering a number
+
+User correctly entered the number1
+
+Manager selected 1: Create an account
+
+Generating a new Customer account number
+
+Manager entered a valid name
+
+Manager entered a valid name
+
+openAccount(vector<Customer>& Customers, int accID = 12346string firstName = jojostring lastName = joestar)
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 0int high = 0
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 1int high = 0
+
+Manager successfully opened an account.
+
+Manager could not open the account
+
+
+User is entering a number
+
+User correctly entered the number4
+
+Manager selected 4: Display all accounts
+
+Manager is asked how to display accounts
+
+User is entering a number
+
+User correctly entered the number1
+
+Manager selected 1: By account number
+
+
+User is entering a number
+
+User correctly entered the number5
+
+Manager selected 6: Logout
+
+User is entering a number
+
+User is entering a number
+
+User correctly entered the number1
+
+
+User is entering a number
+
+User correctly entered the number3
+
+Manager selected 3: Display an account
+
+User is entering a number
+
+User correctly entered the number12346
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 0int high = 1
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 1int high = 1
+
+int getAccountIndex() found 1
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 0int high = 1
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 1int high = 1
+
+int getAccountIndex() found 1
+
+Manager successfully displayed an account
+
+
+User is entering a number
+
+User correctly entered the number4
+
+Manager selected 4: Display all accounts
+
+Manager is asked how to display accounts
+
+User is entering a number
+
+User correctly entered the number2
+
+Manager selected 2: By last name
+
+
+User is entering a number
+
+User correctly entered the number5
+
+Manager selected 6: Logout
+
+User is entering a number
+
+User correctly entered the number12346
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 0int high = 1
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 1int high = 1
+
+int getAccountIndex() found 1
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 0int high = 1
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12346 int low = 1int high = 1
+
+int getAccountIndex() found 1
+
+Logged in as Customer #12346
+
+
+User is entering a number
+
+User correctly entered the number3
+
+12346 selected 3: Deposit
+
+User is entering a number
+
+User correctly entered the number1
+
+12346 selected 1: Deposit in Chequing
+
+User is entering a double
+
+User correctly entered a double
+
+12346 deposited $1555.000000 in to his/her chequing
+
+
+User is entering a number
+
+User correctly entered the number5
+
+12346 selected 5: View balance
+
+
+User is entering a number
+
+User correctly entered the number7
+
+12346 selected 7: Logout
+
+User is entering a number
+
+User correctly entered the number1
+
+
+User is entering a number
+
+User correctly entered the number4
+
+Manager selected 4: Display all accounts
+
+Manager is asked how to display accounts
+
+User is entering a number
+
+User correctly entered the number1
+
+Manager selected 1: By account number
+
+
+User is entering a number
+
+User correctly entered the number5
+
+Manager selected 6: Logout
+
+User is entering a number
+
+User is entering a number
+
+User correctly entered the number1
+
+
+User is entering a number
+
+User correctly entered the number4
+
+Manager selected 4: Display all accounts
+
+Manager is asked how to display accounts
+
+User is entering a number
+
+User correctly entered the number1
+
+Manager selected 1: By account number
+
+
+User is entering a number
+
+User correctly entered the number5
+
+Manager selected 6: Logout
+
+User is entering a number
+
+User is entering a number
+
+User correctly entered the number1
+
+
+User is entering a number
+
+User correctly entered the number4
+
+Manager selected 4: Display all accounts
+
+Manager is asked how to display accounts
+
+User is entering a number
+
+User correctly entered the number1
+
+Manager selected 1: By account number
+
+
+User is entering a number
+
+User is entering a number
+
+User correctly entered the number1
+
+
+User is entering a number
+
+User correctly entered the number1
+
+Manager selected 1: Create an account
+
+Generating a new Customer account number
+
+Manager entered a valid name
+
+Manager entered a valid name
+
+createAccount(vector<Customer>& Customers, int accID = 12347string firstName = jolyestring lastName = joestar)
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12347 int low = 0int high = 1
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12347 int low = 1int high = 1
+
+int getAccountIndex(vector<Customer>& Customers, int targetAccNum = 12347 int low = 2int high = 1
+
+Manager successfully opened an account.
+
+Manager could not open the account
+
+
+User is entering a number
+
+User correctly entered the number4
+
+Manager selected 4: Display all accounts
+
+Manager is asked how to display accounts
+
+User is entering a number
+
+User correctly entered the number1
+
+Manager selected 1: By account number
+
+
+User is entering a number
+
+User correctly entered the number5
+
+Manager selected 6: Logout
+
+User is entering a number
+
+User is entering a number
+
+User correctly entered the number0
+
+maintenanceMenu()
+
+User is entering a number
+
+User correctly entered the number2
+
+Maintenance selected 2: print Execution traces
+
+Maintenance is printing the execution traces
+
+User is entering a number
+
+User correctly entered the number1
+
+Maintenance selected 1: Toggle execution tracing
+
+User is entering a number
+
+User correctly entered the number1
+

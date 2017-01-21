@@ -1,0 +1,93 @@
+--------------
+show databases
+--------------
+
+Database
+information_schema
+mysql
+performance_schema
+vlam54db
+--------------
+drop database if exists vlam54db
+--------------
+
+--------------
+create database vlam54db
+--------------
+
+--------------
+show tables
+--------------
+
+--------------
+create table Customer
+(
+CusID char(3) not null unique, 
+FName varchar(30) not null, 
+LName varchar(30) not null, 
+Sex char(1), 
+Email varchar(300) not null, 
+primary key (CusID)
+)
+--------------
+
+--------------
+create table Movie
+(
+MovID char(3) not null unique, 
+Name varchar(50) not null, 
+Year int(4), 
+primary key (MovID)
+)
+--------------
+
+--------------
+create table Genre
+(
+MovID char(3) not null, 
+Genre varchar(20) not null, 
+primary key (MovID, Genre), 
+foreign key (MovID) references Movie(MovID)
+)
+--------------
+
+--------------
+create table TheatreRoom
+(
+RoomNo int not null unique, 
+Capacity int, 
+primary key (RoomNo)
+)
+--------------
+
+--------------
+create table Showing
+(
+ShowID char(3) not null unique, 
+Date DATE, 
+Time TIME, 
+RoomNo int(3) not null, 
+MovID char(3) not null, 
+primary key (ShowID), 
+foreign key (RoomNo) references TheatreRoom(RoomNo), 
+foreign key (MovID) references Movie(MovID)
+)
+--------------
+
+--------------
+create table Selects
+(ShowID char(3) not null, CusID char(3) not null, Price double(5,2), Rating int(1), primary key (ShowID, CusID),foreign key (ShowID) references Showing(ShowID),foreign key (CusID) references Customer(CusID)
+)
+--------------
+
+--------------
+show tables
+--------------
+
+Tables_in_vlam54db
+Customer
+Genre
+Movie
+Selects
+Showing
+TheatreRoom

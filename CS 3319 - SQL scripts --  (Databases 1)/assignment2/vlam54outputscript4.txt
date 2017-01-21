@@ -1,0 +1,357 @@
+--------------
+show databases
+--------------
+
+Database
+information_schema
+mysql
+performance_schema
+vlam54db
+--------------
+show tables
+--------------
+
+Tables_in_vlam54db
+Customer
+Genre
+Movie
+Selects
+Showing
+TheatreRoom
+--------------
+create view Part4 as select Selects.ShowID as ShowID, Name, Selects.CusID as CusID, Rating from Selects, Showing, Movie where Selects.ShowID = Showing.ShowID and Showing.MovID=Movie.MovID
+--------------
+
+--------------
+select * from Part4
+--------------
+
+ShowID	Name	CusID	Rating
+333	Star Wars	222	5
+334	Star Wars	222	5
+334	Star Wars	223	5
+334	Star Wars	224	5
+334	Star Wars	225	5
+334	Star Wars	226	5
+334	Star Wars	229	5
+340	Aloha	222	1
+340	Aloha	223	1
+346	Tommy Boy	222	4
+347	Two Weeks Notice	229	5
+500	Howls Moving Castle	223	5
+--------------
+create view Part4a as select FName, LName, Name as Movie, Rating, Customer.CusID as CusID from Part4, Customer where Part4.CusID =Customer.CusID
+--------------
+
+--------------
+select * from Part4a
+--------------
+
+FName	LName	Movie	Rating	CusID
+Will	Beldman	Star Wars	5	222
+Will	Beldman	Star Wars	5	222
+Vivian	Lam	Star Wars	5	223
+Bill	Clinton	Star Wars	5	224
+Hilary	Clinton	Star Wars	5	225
+Donald	Trump	Star Wars	5	226
+Barack	Obama	Star Wars	5	229
+Will	Beldman	Aloha	1	222
+Vivian	Lam	Aloha	1	223
+Will	Beldman	Tommy Boy	4	222
+Barack	Obama	Two Weeks Notice	5	229
+Vivian	Lam	Howls Moving Castle	5	223
+--------------
+create view MovRatings as select FName,LName, Movie, AVG(Rating)as Rating from Part4a group by CusID, Rating
+--------------
+
+--------------
+select * from MovRatings
+--------------
+
+FName	LName	Movie	Rating
+Will	Beldman	Aloha	1.0000
+Will	Beldman	Tommy Boy	4.0000
+Will	Beldman	Star Wars	5.0000
+Vivian	Lam	Aloha	1.0000
+Vivian	Lam	Star Wars	5.0000
+Bill	Clinton	Star Wars	5.0000
+Hilary	Clinton	Star Wars	5.0000
+Donald	Trump	Star Wars	5.0000
+Barack	Obama	Star Wars	5.0000
+--------------
+show tables
+--------------
+
+Tables_in_vlam54db
+Customer
+Genre
+MovRatings
+Movie
+Part4
+Part4a
+Selects
+Showing
+TheatreRoom
+--------------
+drop view MovRatings
+--------------
+
+--------------
+drop view Part4
+--------------
+
+--------------
+drop view Part4a
+--------------
+
+--------------
+show tables
+--------------
+
+Tables_in_vlam54db
+Customer
+Genre
+Movie
+Selects
+Showing
+TheatreRoom
+--------------
+select CusID from Customer where LName = "Trump"
+--------------
+
+CusID
+226
+--------------
+select * from Selects
+--------------
+
+ShowID	CusID	Price	Rating
+333	222	4.00	5
+334	222	10.00	5
+334	223	30.00	5
+334	224	20.00	5
+334	225	5.00	5
+334	226	100.00	5
+334	229	5.00	5
+340	222	12.00	1
+340	223	5.00	1
+346	222	5.00	4
+347	229	12.00	5
+500	223	999.00	5
+--------------
+delete from Selects where CusID="226"
+--------------
+
+--------------
+select * from Selects
+--------------
+
+ShowID	CusID	Price	Rating
+333	222	4.00	5
+334	222	10.00	5
+334	223	30.00	5
+334	224	20.00	5
+334	225	5.00	5
+334	229	5.00	5
+340	222	12.00	1
+340	223	5.00	1
+346	222	5.00	4
+347	229	12.00	5
+500	223	999.00	5
+--------------
+show tables
+--------------
+
+Tables_in_vlam54db
+Customer
+Genre
+Movie
+Selects
+Showing
+TheatreRoom
+--------------
+select * from Customer
+--------------
+
+CusID	FName	LName	Sex	Email
+222	Will	Beldman	M	wbeldma@uwo.ca
+223	Vivian	Lam	F	vlam54@uwo.ca
+224	Bill	Clinton	M	billy@prez.com
+225	Hilary	Clinton	F	nextprezmaybe@prez.com
+226	Donald	Trump	M	nextprezalso@prez.com
+227	Gary	Johnson	M	nextpreztoo@prez.com
+228	Sue	Stein	F	nextprezaswell@prez.com
+229	Barack	Obama	M	lastprez@prez.com
+--------------
+delete from Customer where CusID="226"
+--------------
+
+--------------
+select * from Customer
+--------------
+
+CusID	FName	LName	Sex	Email
+222	Will	Beldman	M	wbeldma@uwo.ca
+223	Vivian	Lam	F	vlam54@uwo.ca
+224	Bill	Clinton	M	billy@prez.com
+225	Hilary	Clinton	F	nextprezmaybe@prez.com
+227	Gary	Johnson	M	nextpreztoo@prez.com
+228	Sue	Stein	F	nextprezaswell@prez.com
+229	Barack	Obama	M	lastprez@prez.com
+--------------
+show tables
+--------------
+
+Tables_in_vlam54db
+Customer
+Genre
+Movie
+Selects
+Showing
+TheatreRoom
+--------------
+select * from Showing
+--------------
+
+ShowID	Date	Time	RoomNo	MovID
+333	2016-02-11	21:30:00	1	100
+334	2016-02-11	19:30:00	2	100
+335	2016-02-11	19:00:00	3	101
+336	2016-02-11	21:00:00	2	111
+337	2016-03-12	19:00:00	1	102
+338	2016-03-12	21:00:00	1	103
+339	2016-03-13	19:00:00	2	103
+340	2016-03-20	19:00:00	1	103
+341	2016-03-20	21:00:00	1	104
+342	2016-03-20	19:00:00	2	109
+344	2016-03-21	19:00:00	1	110
+345	2016-03-22	21:00:00	3	108
+346	2016-03-22	20:30:00	2	107
+347	2016-03-23	22:00:00	1	110
+500	2016-09-19	19:00:00	3	666
+--------------
+select ShowID from Showing where RoomNo="3"
+--------------
+
+ShowID
+335
+345
+500
+--------------
+select * from Selects
+--------------
+
+ShowID	CusID	Price	Rating
+333	222	4.00	5
+334	222	10.00	5
+334	223	30.00	5
+334	224	20.00	5
+334	225	5.00	5
+334	229	5.00	5
+340	222	12.00	1
+340	223	5.00	1
+346	222	5.00	4
+347	229	12.00	5
+500	223	999.00	5
+--------------
+delete from Selects where ShowID = "335"
+--------------
+
+--------------
+delete from Selects where ShowID = "345"
+--------------
+
+--------------
+delete from Selects where ShowID = "500"
+--------------
+
+--------------
+select * from Selects
+--------------
+
+ShowID	CusID	Price	Rating
+333	222	4.00	5
+334	222	10.00	5
+334	223	30.00	5
+334	224	20.00	5
+334	225	5.00	5
+334	229	5.00	5
+340	222	12.00	1
+340	223	5.00	1
+346	222	5.00	4
+347	229	12.00	5
+--------------
+select * from Showing
+--------------
+
+ShowID	Date	Time	RoomNo	MovID
+333	2016-02-11	21:30:00	1	100
+334	2016-02-11	19:30:00	2	100
+335	2016-02-11	19:00:00	3	101
+336	2016-02-11	21:00:00	2	111
+337	2016-03-12	19:00:00	1	102
+338	2016-03-12	21:00:00	1	103
+339	2016-03-13	19:00:00	2	103
+340	2016-03-20	19:00:00	1	103
+341	2016-03-20	21:00:00	1	104
+342	2016-03-20	19:00:00	2	109
+344	2016-03-21	19:00:00	1	110
+345	2016-03-22	21:00:00	3	108
+346	2016-03-22	20:30:00	2	107
+347	2016-03-23	22:00:00	1	110
+500	2016-09-19	19:00:00	3	666
+--------------
+delete from Showing where RoomNo="3"
+--------------
+
+--------------
+select * from Showing
+--------------
+
+ShowID	Date	Time	RoomNo	MovID
+333	2016-02-11	21:30:00	1	100
+334	2016-02-11	19:30:00	2	100
+336	2016-02-11	21:00:00	2	111
+337	2016-03-12	19:00:00	1	102
+338	2016-03-12	21:00:00	1	103
+339	2016-03-13	19:00:00	2	103
+340	2016-03-20	19:00:00	1	103
+341	2016-03-20	21:00:00	1	104
+342	2016-03-20	19:00:00	2	109
+344	2016-03-21	19:00:00	1	110
+346	2016-03-22	20:30:00	2	107
+347	2016-03-23	22:00:00	1	110
+--------------
+select * from TheatreRoom
+--------------
+
+RoomNo	Capacity
+1	30
+2	5
+3	100
+4	30
+5	6
+--------------
+delete from TheatreRoom where RoomNo="3"
+--------------
+
+--------------
+select * from TheatreRoom
+--------------
+
+RoomNo	Capacity
+1	30
+2	5
+4	30
+5	6
+--------------
+show tables
+--------------
+
+Tables_in_vlam54db
+Customer
+Genre
+Movie
+Selects
+Showing
+TheatreRoom

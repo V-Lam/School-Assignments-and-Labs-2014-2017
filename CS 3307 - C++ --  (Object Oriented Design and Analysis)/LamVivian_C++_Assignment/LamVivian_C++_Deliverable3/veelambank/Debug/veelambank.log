@@ -1,0 +1,13 @@
+﻿  main.cpp
+c:\users\vivian a. lam\desktop\cs3307 vlambank - copy - copy\veelambank\main.cpp(97): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\vivian a. lam\desktop\cs3307 vlambank - copy - copy\veelambank\main.cpp(129): warning C4101: 'credLimit': unreferenced local variable
+c:\users\vivian a. lam\desktop\cs3307 vlambank - copy - copy\veelambank\main.cpp(129): warning C4101: 'cred': unreferenced local variable
+c:\users\vivian a. lam\desktop\cs3307 vlambank - copy - copy\veelambank\main.cpp(129): warning C4101: 'owed': unreferenced local variable
+c:\users\vivian a. lam\desktop\cs3307 vlambank - copy - copy\veelambank\main.cpp(673): warning C4018: '<': signed/unsigned mismatch
+c:\users\vivian a. lam\desktop\cs3307 vlambank - copy - copy\veelambank\main.cpp(915): warning C4018: '<': signed/unsigned mismatch
+  Customer.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Manager.cpp
+  veelambank.vcxproj -> C:\Users\Vivian A. Lam\Desktop\cs3307 vlambank - Copy - Copy\veelambank\Debug\veelambank.exe
+  veelambank.vcxproj -> C:\Users\Vivian A. Lam\Desktop\cs3307 vlambank - Copy - Copy\veelambank\Debug\veelambank.pdb (Partial PDB)
